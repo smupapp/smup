@@ -18,22 +18,3 @@ yarn run dev
 yarn run build
 ```
 
-- Build electron app for
-
-- Mac
-
-```
-yarn run buildmac
-```
-
-- Linux
-
-```
-yarn run buildlinux
-```
-
-- Windows
-
-```
-yarn run buildwindows
-```
