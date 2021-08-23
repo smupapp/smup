@@ -1,0 +1,46 @@
+{
+  "name": "smup",
+  "version": "0.0.1",
+  "description": "Speed me up - Desktop App",
+  "author": "Arshad Kazmi",
+  "homepage": "https://github.com/arshadkazmi42/smup",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arshadkazmi42/smup.git"
+  },
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "prod": "webpack --config webpack.build.config.js && electron --noDevServer .",
+    "dev": "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
+    "build": "webpack --config webpack.build.config.js",
+    "package": "webpack --config webpack.build.config.js",
+    "postpackage": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --overwrite",
+    "buildlinux": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=linux --arch=x64 --overwrite",
+    "buildwindows": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=win32 --arch=x64 --overwrite",
+    "buildmac": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=darwin --arch=x64 --overwrite"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
+    "@webpack-cli/migrate": "^1.1.2",
+    "babel-loader": "^8.2.2",
+    "babili-webpack-plugin": "^0.1.2",
+    "css-loader": "^6.2.0",
+    "electron": "^13.2.1",
+    "electron-packager": "^15.3.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.0.0"
+  }
+}
