@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+html, body {
+  margin: 0;
+  background-color: #EBE8F1;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+::-webkit-input-placeholder {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #BBC2D1;
+}
+:-moz-placeholder {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
