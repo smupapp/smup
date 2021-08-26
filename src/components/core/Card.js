@@ -19,6 +19,7 @@ const StyledBox = styled.div`
   border: ${props => props.theme.border};
   border-radius: ${props => props.theme.borderRadius};
   box-shadow: ${props => props.theme.boxShadow};
+  user-select: ${props => props.theme.userSelect};
 `;
 
 const theme = {
@@ -39,8 +40,11 @@ export default class Card extends React.Component {
 
   render() {
 
+    const inputTheme = {...theme, ...this.props.theme}
     return (
-      <StyledBox theme={this.props.theme || theme}>{this.props.children}</StyledBox>
+      <StyledBox theme={inputTheme}>
+        {this.props.children}
+      </StyledBox>
     );
   }
 }

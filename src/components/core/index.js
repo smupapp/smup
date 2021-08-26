@@ -1,4 +1,3 @@
-export { default as ButtonIcon } from './ButtonIcon';
 export { default as ButtonPrimary } from './ButtonPrimary';
 export { default as Card } from './Card';
 export { default as Container } from './Container';

@@ -6,9 +6,10 @@ import { COLORS } from '../../../../../constants';
 
 const STYLE = {
   CONTAINER: {
-    width: '300px',
+    display: 'flex',
+    width: '100%',
     marginTop: '10px',
-    marginBottom: '10px',
+    marginBottom: '10px'
   }
 };
 
@@ -27,6 +28,9 @@ class Search extends React.Component {
           borderRadius='12px'
           padding='15px'
           placeholder={PLACEHOLDER}
+          boxShadow={`1px 10px 30px ${COLORS.PALETTE.BORDER_GRAY}`}
+          backgroundColor={COLORS.PALETTE.LIGHT_GRAY}
+          border='none'
         />
       </Container>
     )

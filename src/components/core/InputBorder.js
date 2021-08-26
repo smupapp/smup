@@ -21,6 +21,7 @@ const StyledInput = styled.input`
   font-weight: ${props => props.theme.fontWeight};
   border: ${props => props.theme.border};
   border-radius: ${props => props.theme.borderRadius};
+  box-shadow: ${props => props.theme.boxShadow};
   &:focus {
     outline: none;
   }

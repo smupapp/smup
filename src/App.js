@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import { AdminHome } from './packages/admin';
+import { AdminHome, AdminRequirement } from './packages/admin';
 
 
 import './assets/css/App.css';
@@ -14,7 +14,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <AdminHome />
+        {/* <AdminHome /> */}
+        <AdminRequirement />
       </div>
     );
   }
