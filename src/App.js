@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import { AdminHome, AdminRequirement } from './packages/admin';
 
 
@@ -14,8 +13,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* <AdminHome /> */}
-        <AdminRequirement />
+        <AdminHome />
+        {/* <AdminRequirement /> */}
       </div>
     );
   }

@@ -40,7 +40,7 @@ export default class Card extends React.Component {
 
   render() {
 
-    const inputTheme = {...theme, ...this.props.theme}
+    const inputTheme = {...theme, ...this.props, ...(this.props.theme || {})}
     return (
       <StyledBox theme={inputTheme}>
         {this.props.children}
