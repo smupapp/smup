@@ -4,10 +4,12 @@ import COLORS from '../../constants/colors';
 
 
 const StyledText = styled.div`
+  height: ${props => props.theme.height};
   color: ${props => props.theme.color};
   font-size: ${props => props.theme.fontSize};
   font-weight: ${props => props.theme.fontWeight};
   letter-spacing: ${props => props.theme.letterSpacing};
+  overflow: ${props => props.theme.overflow};
 `;
 
 const theme = {
@@ -19,10 +21,11 @@ const theme = {
 
 
 export default class Text extends React.Component {
+  
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <StyledText theme={{...this.props}}>{this.props.children}</StyledText>
+        <StyledText theme={{...this.props.theme}}>{this.props.children}</StyledText>
       </ThemeProvider>
     )
   }

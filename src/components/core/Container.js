@@ -16,6 +16,7 @@ const StyledContainer = styled.div`
   display: ${props => props.theme.display};
   flex: ${props => props.theme.flex};
   flex-direction: ${props => props.theme.flexDirection};
+  flex-wrap: ${props => props.theme.flexWrap};
   height: ${props => props.theme.height};
   justify-content: ${props => props.theme.justifyContent};
   margin: ${props => props.theme.margin};

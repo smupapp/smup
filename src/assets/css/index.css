@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lexend');
 
 html, body {
   margin: 0;
   background-color: #EBE8F1;
-  font-family: "Lato", sans-serif;
+  font-family: "Lexend",sans-serif;
+  font-variant: tabular-nums;
   font-style: normal;
   font-weight: 400;
   height: 100%;
@@ -13,20 +14,27 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 input {
-  font-family: "Lato", sans-serif;
+  font-family: "Lexend", sans-serif;
+  font-variant: tabular-nums;
   font-style: normal;
   font-weight: 400;
 }
 
 ::-webkit-input-placeholder {
-  font-family: "Lato", sans-serif;
+  font-family: "Lexend", sans-serif;
+  font-variant: tabular-nums;
   font-style: normal;
   font-weight: 400;
   color: #BBC2D1;
 }
 :-moz-placeholder {
-  font-family: "Lato", sans-serif;
+  font-family: "Lexend", sans-serif;
+  font-variant: tabular-nums;
   font-style: normal;
   font-weight: 400;
 }

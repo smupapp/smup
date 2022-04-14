@@ -8,7 +8,15 @@ import { COLORS } from '../../../../../constants';
 const TEXT = 'Choose an option'
 
 const STYLE = {
-  marginTop: '50px'
+  container: {
+    marginTop: '50px'
+  },
+  text: {
+    color: COLORS.PALETTE.TEXT_SECONDARY,
+    fontSize: '15px',
+    fontWeight: 'bold',
+    letterSpacing: '0.5px'
+  }
 };
 
 
@@ -16,10 +24,8 @@ class GridMenuTitle extends React.Component {
 
   render() {
     return (
-      <Container theme={STYLE}>
-        <Text color={COLORS.PALETTE.TEXT_SECONDARY} fontSize='15px' fontWeight='bold' letterSpacing='0.5px'>
-          {TEXT}
-        </Text>
+      <Container theme={STYLE.container}>
+        <Text theme={STYLE.text}>{TEXT}</Text>
       </Container>
     )
   }

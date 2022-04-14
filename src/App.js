@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AdminHome, AdminRequirement } from './packages/admin';
+import { Main } from './packages/main';
 
 
 import './assets/css/App.css';
@@ -13,8 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <AdminHome />
-        {/* <AdminRequirement /> */}
+        <Main />
       </div>
     );
   }

@@ -17,6 +17,7 @@ const StyledInput = styled.input`
   color: ${props => props.theme.color};
   background-color: ${props => props.theme.backgroundColor};
   text-align: ${props => props.theme.textAlign};
+  text-overflow: ${props => props.theme.textOverflow};
   font-size: ${props => props.theme.fontSize};
   font-weight: ${props => props.theme.fontWeight};
   border: ${props => props.theme.border};
@@ -37,6 +38,7 @@ const theme = {
   'color': COLORS.PALETTE.TEXT_SECONDARY,
   'backgroundColor': COLORS.PALETTE.TRANSPARENT,
   'textAlign': 'center',
+  'textOverflow': 'ellipsis',
   'fontSize': '35px',
   'fontWeight': 'normal',
   'borderRadius': '0px',
@@ -46,7 +48,7 @@ const theme = {
 export default class InputBorder extends React.Component {
 
   render() {
-    const inputTheme = { ...theme, ...this.props };
+    const inputTheme = { ...theme, ...this.props.theme };
     return (
       <StyledInput
         theme={inputTheme}

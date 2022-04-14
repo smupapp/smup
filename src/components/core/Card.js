@@ -14,11 +14,14 @@ const StyledBox = styled.div`
   margin: ${props => props.theme.margin};
   color: ${props => props.theme.color};
   background-color: ${props => props.theme.backgroundColor};
+  background: ${props => props.theme.background};
   text-align: ${props => props.theme.textAlign};
   font-size: ${props => props.theme.fontSize};
   border: ${props => props.theme.border};
+  border-color: ${props => props.theme.borderColor};
   border-radius: ${props => props.theme.borderRadius};
   box-shadow: ${props => props.theme.boxShadow};
+  text-shadow: ${props => props.theme.textShadow};
   user-select: ${props => props.theme.userSelect};
 `;
 
