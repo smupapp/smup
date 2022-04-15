@@ -19,6 +19,10 @@ const StyledButton = styled.div`
   border-radius: 0px;
   box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
   user-select: none;
+  &:hover {
+    color: ${COLORS.PALETTE.TEXT_PRIMARY};
+    background-color: ${COLORS.PALETTE.PRIMARY};
+  }
 `;
 
 export default class ButtonPrimary extends React.Component {

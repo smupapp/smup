@@ -6,6 +6,7 @@ import { GridTitle, GridCardDescription } from '.';
 import { COLORS } from '../../../../../constants';
 
 
+// TODO Move to constants
 const IMAGE_URLS = {
   'github': 'https://cdn.iconscout.com/icon/free/png-256/github-3215409-2673827.png'
 };
