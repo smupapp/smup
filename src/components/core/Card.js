@@ -23,6 +23,9 @@ const StyledBox = styled.div`
   box-shadow: ${props => props.theme.boxShadow};
   text-shadow: ${props => props.theme.textShadow};
   user-select: ${props => props.theme.userSelect};
+  &:hover {
+    ${props => props.theme['&:hover']};
+  }
 `;
 
 const theme = {

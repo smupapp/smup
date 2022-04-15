@@ -23,19 +23,23 @@ const STYLES = {
     textAlign: 'left',
     width: '300px',
     height: '150px',
-    margin: '5px',
+    margin: '15px',
     padding: '1rem',
-    background: `${COLORS.PALETTE.LIGHT_GRAY}`,
+    backgroundColor: `${COLORS.PALETTE.LIGHT_GRAY}`,
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
     userSelect: 'none',
-    boxShadow: 'none'
+    boxShadow: 'none',
+    '&:hover': {
+      backgroundColor: COLORS.PALETTE.WHITE,
+      boxShadow: `0px 0px 20px 0px ${COLORS.PALETTE.BORDER_GRAY}`
+    }
   },
   cardHead: {
     display: 'flex',
     flexDirection: 'row',
-    textAlign: 'center',
+    textAlign: 'left',
     alignItems: 'center'
   },
   cardBottom: {
