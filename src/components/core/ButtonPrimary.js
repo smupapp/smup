@@ -25,6 +25,7 @@ const StyledButton = styled.div`
   &:hover {
     color: ${COLORS.PALETTE.TEXT_PRIMARY};
     background-color: ${COLORS.PALETTE.WHITE};
+    border: 1px solid ${COLORS.PALETTE.PRIMARY};
   }
 `;
 

@@ -1,17 +1,18 @@
 import React from 'react';
 
-import { Container, Text } from '../../../../../components';
+import { Container, Text } from '../../../components';
 
-import { COLORS } from '../../../../../constants';
+import { COLORS } from '../../../constants';
+
 
 const STYLE = {
   container: {
     margin: '5px'
   },
   text: {
-    color: COLORS.PALETTE.TEXT_BLACK,
-    fontSize: '25px',
-    fontWeight: '700'
+    color: COLORS.PALETTE.TEXT_PRIMARY,
+    fontSize: '20px',
+    fontWeight: '900'
   }
 };
 

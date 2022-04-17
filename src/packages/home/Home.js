@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Container } from '../../../../components';
+import { Container } from '../../components';
 import { CategoriesRow, Description, GridMenu, Search, Title } from './components';
 
-import { COLORS } from '../../../../constants';
+import { COLORS } from '../../constants';
 
 
 const STYLES = {
@@ -32,14 +32,15 @@ const STYLES = {
 };
 
 
-export default class AdminHome extends React.Component {
+class Home extends React.Component {
+
   constructor(props) {
     super(props);
 
     this.state = {}
-
     this.handleOnClick = this.handleOnClick.bind(this);
   }
+
 
   handleOnClick = (event) => {
     const target = event.currentTarget || event.target;
@@ -47,6 +48,7 @@ export default class AdminHome extends React.Component {
       const id = target.id;
     }
   }
+  
 
   render() {
     return (
@@ -66,3 +68,6 @@ export default class AdminHome extends React.Component {
     )
   }
 }
+
+
+export default Home;

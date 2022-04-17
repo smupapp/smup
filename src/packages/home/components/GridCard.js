@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Card, Container, Image } from '../../../../../components';
+import { Card, Container, Image } from '../../../components';
 import { GridTitle, GridCardDescription } from '.';
 
-import { COLORS } from '../../../../../constants';
+import { COLORS } from '../../../constants';
 
 
 // TODO Move to constants
@@ -49,7 +49,7 @@ const STYLES = {
 };
 
 
-export default class GridCard extends React.Component {
+class GridCard extends React.Component {
 
   render() {
 
@@ -69,3 +69,5 @@ export default class GridCard extends React.Component {
   }
 }
 
+
+export default GridCard;

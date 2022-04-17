@@ -1,23 +1,26 @@
 import React from 'react';
 
-import { Container, Text } from '../../../../../components';
+import { Container, Text } from '../../../components';
 
-import { COLORS } from '../../../../../constants';
+import { COLORS } from '../../../constants';
+
 
 const STYLE = {
   container: {
+    maxWidth: '100%',
     margin: '5px'
   },
   text: {
-    height: '100px',
     fontSize: '15px',
     overflow: 'hidden',
+    fontWeight: '300',
+    lineHeight: '1.7',
     color: COLORS.PALETTE.TEXT_GRAY
   }
 };
 
 
-class GridCardDescription extends React.Component {
+class Content extends React.Component {
 
   render() {
     return (
@@ -29,4 +32,4 @@ class GridCardDescription extends React.Component {
 }
 
 
-export default GridCardDescription;
+export default Content;

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { ButtonSecondary, Container } from '../../../../../components';
+import { ButtonSecondary, Container } from '../../../components';
 
-import { COLORS, DATA } from '../../../../../constants';
+import { COLORS, DATA } from '../../../constants';
 
 
 const MAX_CATEGORIES = 5;
@@ -31,7 +31,6 @@ class CategoriesRow extends React.Component {
   render() {
 
     const categories = DATA.CATEGORIES.slice(0, MAX_CATEGORIES);
-    console.log(categories);
 
     return (
       <Container theme={STYLE.container}>

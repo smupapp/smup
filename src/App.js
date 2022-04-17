@@ -1,19 +1,16 @@
 import React from 'react';
 
-import { Main } from './packages/main';
-
+import { Home, Tool } from './packages';
 
 import './assets/css/App.css';
-
-
-
 
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Main />
+        {/* <Home /> */}
+        <Tool />
       </div>
     );
   }

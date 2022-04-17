@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Container, InputBorder } from '../../../../../components';
-import { COLORS } from '../../../../../constants';
+import { Container, InputBorder } from '../../../components';
+import { COLORS } from '../../../constants';
 
 
 const STYLE = {

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Container } from '../../../../../components';
-
+import { Container } from '../../../components';
 import { GridCard } from '.';
-import { COLORS } from '../../../../../constants';
+
+import { COLORS } from '../../../constants';
 
 
 const STYLE = {

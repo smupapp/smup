@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Container, Text } from '../../../../../components';
+import { Container, Text } from '../../../components';
 
-import { COLORS } from '../../../../../constants';
+import { COLORS } from '../../../constants';
+
 
 const STYLE = {
   container: {
@@ -10,12 +11,13 @@ const STYLE = {
   },
   text: {
     color: COLORS.PALETTE.TEXT_PRIMARY,
-    fontSize: '20px'
+    fontSize: '40px',
+    fontWeight: 'bold'
   }
 };
 
 
-class Title extends React.Component {
+class Header extends React.Component {
 
   render() {
     return (
@@ -27,4 +29,4 @@ class Title extends React.Component {
 }
 
 
-export default Title;
+export default Header;

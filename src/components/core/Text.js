@@ -9,6 +9,7 @@ const StyledText = styled.div`
   font-size: ${props => props.theme.fontSize};
   font-weight: ${props => props.theme.fontWeight};
   letter-spacing: ${props => props.theme.letterSpacing};
+  line-height: ${props => props.theme.lineHeight};
   overflow: ${props => props.theme.overflow};
 `;
 

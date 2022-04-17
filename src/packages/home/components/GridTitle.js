@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Container, Text } from '../../../../../components';
+import { Container, Text } from '../../../components';
 
-import { COLORS } from '../../../../../constants';
+import { COLORS } from '../../../constants';
 
 
 const STYLE = {
@@ -11,13 +11,13 @@ const STYLE = {
   },
   text: {
     color: COLORS.PALETTE.TEXT_PRIMARY,
-    fontSize: '40px',
-    fontWeight: 'bold'
+    fontSize: '16px',
+    fontWeight: '600'
   }
 };
 
 
-class Header extends React.Component {
+class GridTitle extends React.Component {
 
   render() {
     return (
@@ -29,4 +29,4 @@ class Header extends React.Component {
 }
 
 
-export default Header;
+export default GridTitle;

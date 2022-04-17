@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Container, Text } from '../../../../../components';
+import { Container, Text } from '../../../components';
 
-import { COLORS } from '../../../../../constants';
+import { COLORS } from '../../../constants';
 
 
 const STYLE = {
@@ -10,14 +10,14 @@ const STYLE = {
     margin: '5px'
   },
   text: {
-    color: COLORS.PALETTE.TEXT_PRIMARY,
-    fontSize: '40px',
-    fontWeight: 'bold'
+    color: COLORS.PALETTE.TEXT_GRAY,
+    fontSize: '18px',
+    lineHeight: '1.7'
   }
 };
 
 
-class Header extends React.Component {
+class Description extends React.Component {
 
   render() {
     return (
@@ -29,4 +29,4 @@ class Header extends React.Component {
 }
 
 
-export default Header;
+export default Description;
