@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container } from '../../components';
-import { Body, Header } from './components';
+import { Back, Body, Description, Header, Title } from './components';
 
 import { COLORS } from '../../constants';
 
@@ -75,6 +75,7 @@ class Tool extends React.Component {
         <Container theme={STYLES.head.main}>
           <Container theme={STYLES.head.header}>
             <Header data={data}/>
+            <Back onClick={this.props.onHome} />
           </Container>
         </Container>
         <Container theme={STYLES.body.main}>

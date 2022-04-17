@@ -28,9 +28,15 @@ const STYLE = {
 
 class CategoriesRow extends React.Component {
 
+
+  getCategories() {
+
+    return DATA.CATEGORIES.slice(0, 5);
+  }
+
   render() {
 
-    const categories = DATA.CATEGORIES.slice(0, MAX_CATEGORIES);
+    const categories = this.getCategories();
 
     return (
       <Container theme={STYLE.container}>

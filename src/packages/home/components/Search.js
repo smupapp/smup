@@ -24,6 +24,7 @@ const STYLE = {
 
 
 const PLACEHOLDER = 'Search...';
+const ID = 'query';
 
 
 class Search extends React.Component {
@@ -32,8 +33,11 @@ class Search extends React.Component {
     return (
       <Container theme={STYLE.container}>
         <InputBorder
+          id={ID}
           theme={STYLE.input}
           placeholder={this.props.children || PLACEHOLDER}
+          value={this.props.value || ''}
+          onChange={this.props.onChange}
         />
       </Container>
     )

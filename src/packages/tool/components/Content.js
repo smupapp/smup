@@ -15,7 +15,7 @@ const STYLE = {
     overflow: 'hidden',
     fontWeight: '300',
     lineHeight: '1.7',
-    color: COLORS.PALETTE.TEXT_GRAY
+    color: COLORS.PALETTE.TEXT_PRIMARY
   }
 };
 

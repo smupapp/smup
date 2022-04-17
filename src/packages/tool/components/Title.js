@@ -10,9 +10,9 @@ const STYLE = {
     margin: '5px'
   },
   text: {
-    color: COLORS.PALETTE.TEXT_PRIMARY,
-    fontSize: '20px',
-    fontWeight: '900'
+    color: COLORS.PALETTE.TEXT_BLACK,
+    fontSize: '22px',
+    fontWeight: '700'
   }
 };
 

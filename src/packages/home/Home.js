@@ -38,14 +38,22 @@ class Home extends React.Component {
     super(props);
 
     this.state = {}
-    this.handleOnClick = this.handleOnClick.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
 
-  handleOnClick = (event) => {
+  handleOnChange = (event) => {
+
     const target = event.currentTarget || event.target;
+    
     if (target) {
+
       const id = target.id;
+      const value = target.value;
+
+      this.setState({
+        [id]: value
+      });
     }
   }
   
@@ -59,10 +67,10 @@ class Home extends React.Component {
             <Description>100+ bug bounty tools to speed up your bug hunting</Description>
           </Container>
           <Container theme={STYLES.container.middle}>
-            <Search>Search tools from the directory</Search>
+            <Search onChange={this.handleOnChange} value={this.state.query}>Search tools from the directory</Search>
           </Container>
           <CategoriesRow />
-          <GridMenu />
+          <GridMenu onClick={this.props.onClick} query={this.state.query} />
         </Container>
       </React.Fragment>
     )

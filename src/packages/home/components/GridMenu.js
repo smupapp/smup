@@ -27,31 +27,89 @@ const STYLE = {
 
 
 class Grid extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  getToolsList() {
+  getTools() {
 
-    const data = DATA.TOOLS;
-    let tools = [];
+    let tools = DATA.TOOLS;
 
-    for (let category of data) {
-      for (let tool of category.tools) {
-        tools = tools.concat(tool.tools);
-      }
-    }
-
+    tools = this.filterCategory(tools);
+    tools = this.filterQuery(tools);
+    
     return tools;
   }
 
+
+  filterQuery(data) {
+    
+    if (!this.props.query) {
+      return data;
+    }
+
+    const query = this.props.query;
+    const list = [];
+
+    // TODO Change to use _.filter
+    for (let obj of data) {
+
+      const isNameMatched = this.compare(obj.name, query);
+      const isDescriptionMatched = this.compare(obj.description, query);
+      const isSourceMatched = this.compare(obj.source, query);
+      const isCategoryMatched = this.compare(obj.categories.join(','), query);
+
+      if (isNameMatched || isDescriptionMatched || isSourceMatched || isCategoryMatched) {
+        list.push(obj);
+      }
+    }
+    
+    return list;
+  }
+
+
+  filterCategory(data) {
+
+    if (!this.props.category) {
+      return data;
+    }
+
+    const category = this.props.category;
+    const list = [];
+
+    // TODO Change to use _.filter
+    for (let obj of data) {
+
+      const isCategoryMatched = this.compare(obj.categories, category);
+      if (isCategoryMatched) {
+        list.push(obj);
+      }
+    }
+
+    return list;
+  }
+
+
+  compare(value, input) {
+
+    if (!value || !input) {
+      return false;
+    }
+
+    return value.toLowerCase().includes(input.toLowerCase());
+  }
+
+
   render() {
 
-    const tools = this.getToolsList();
+    const tools = this.getTools();
 
     return (
       <Container theme={STYLE.container}>
         {tools.map(data => {
           return (
-            <Container key={data.title} theme={STYLE.item}>
-              <GridCard data={data} />
+            <Container key={data.id} theme={STYLE.item}>
+              <GridCard data={data} onClick={this.props.onClick} />
             </Container>
           )
         })}

@@ -54,7 +54,7 @@ class GridCard extends React.Component {
   render() {
 
     return (
-      <Container theme={STYLES.container}>
+      <Container theme={STYLES.container} onClick={this.props.onClick}>
         <Card theme={STYLES.card}>
           <Container theme={STYLES.cardHead}>
             <Image margin='0px' src={IMAGE_URLS[this.props.data.source]} />
