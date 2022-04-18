@@ -15,7 +15,55 @@ DATA.TOOLS = [
     "images": [
       "https://camo.githubusercontent.com/ad4d6fc3d97b9d05593267ac6e6210075180a5262c9541e4ca7c0b38051a2920/687474703a2f2f7777772e7365636765656b2e6e65742f696d616765732f5375626c69737433722e706e67"
     ],
-    "installation": []
+    "prerequisites": {
+      "label": "Pre-requisites",
+      "commands": [
+        {
+          "label": "Python3 is required",
+          "command": {
+            "darwin": "python3",
+            "linux": "python3"
+          }
+        },
+        {
+          "label": "Git is required",
+          "command": {
+            "darwin": "git",
+            "linux": "git"
+          }
+        },
+      ]
+    },
+    "installation": [
+      {
+        "label": "Clone repository",
+        "command": {
+          "darwin": "mkdir -p /tmp/smup/ && git clone https://github.com/aboul3la/Sublist3r /tmp/smup",
+          "linux": "mkdir -p /tmp/smup/ && git clone https://github.com/aboul3la/Sublist3r /tmp/smup"
+        },
+      },
+      {
+        "label": "Install dependencies",
+        "command": {
+          "darwin": "cd /tmp/smup/Sublist3r && pip3 install -r requirements.txt",
+          "linux": "cd /tmp/smup/Sublist3r && pip3 install -r requirements.txt"
+        }
+      },
+      {
+        "label": "Create alias sublist3r",
+        "command": {
+          "darwin": "alias sublist3r=\"python3 /tmp/smup/Sublist3r/sublist3r.py\"",
+          "linux": "alias sublist3r=\"python3 /tmp/smup/Sublist3r/sublist3r.py\""
+        }
+      },
+      {
+        "label": "Verify installation",
+        "command": {
+          "darwin": "sublist3r",
+          "linux": "sublist3r"
+        }
+      }
+    ]
   },
   {
     "title": "Amass",
