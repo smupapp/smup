@@ -1,3 +1,4 @@
+const externals = {};
 const DATA = {};
 
 
@@ -6,8 +7,8 @@ externals.set = (key, value) => {
 };
 
 
-externals.get = (key, value) => {
-  return DATA[key];
+externals.get = (key, defaultValue) => {
+  return DATA[key] || defaultValue;
 };
 
 

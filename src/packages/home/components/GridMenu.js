@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Container } from '../../../components';
 import { GridCard } from '.';
+import { Context } from '../../../lib';
 
 import { COLORS, DATA } from '../../../constants';
 
@@ -30,6 +31,7 @@ class Grid extends React.Component {
   constructor(props) {
     super(props);
   }
+
 
   getTools() {
 
@@ -63,7 +65,7 @@ class Grid extends React.Component {
         list.push(obj);
       }
     }
-    
+
     return list;
   }
 

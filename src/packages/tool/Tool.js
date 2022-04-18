@@ -4,6 +4,7 @@ import { Container } from '../../components';
 import { Back, Body, Description, Header, Title } from './components';
 
 import { COLORS } from '../../constants';
+import { Context } from '../../lib';
 
 
 const STYLES = {
@@ -54,6 +55,8 @@ const STYLES = {
   }
 };
 
+const SELECTED_TOOL = 'selected_tool';
+
 
 class Tool extends React.Component {
 
@@ -61,25 +64,26 @@ class Tool extends React.Component {
     super(props);
   }
 
+
+  getData() {
+    return Context.get(SELECTED_TOOL, {});
+  }
+
+
   render() {
 
-    const data = {
-      "title": "Sublist3r",
-      "url": "https://github.com/aboul3la/Sublist3r",
-      "description": "Fast subdomains enumeration tool for penetration testers",
-      "source": "github"
-    }
+    const data = this.getData();
 
     return (
       <React.Fragment>
         <Container theme={STYLES.head.main}>
           <Container theme={STYLES.head.header}>
-            <Header data={data}/>
             <Back onClick={this.props.onHome} />
+            <Header data={data}/>
           </Container>
         </Container>
         <Container theme={STYLES.body.main}>
-          <Body />    
+          <Body data={data} />
         </Container>
       </React.Fragment>
     )

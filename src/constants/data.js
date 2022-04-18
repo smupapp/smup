@@ -5,22 +5,31 @@ DATA.TOOLS = [
     "title": "Sublist3r",
     "url": "https://github.com/aboul3la/Sublist3r",
     "description": "Fast subdomains enumeration tool for penetration testers",
+    "fullDescription": "Sublist3r is a python tool designed to enumerate subdomains of websites using OSINT. It helps penetration testers and bug hunters collect and gather subdomains for the domain they are targeting. Sublist3r enumerates subdomains using many search engines such as Google, Yahoo, Bing, Baidu and Ask. Sublist3r also enumerates subdomains using Netcraft, Virustotal, ThreatCrowd, DNSdumpster and ReverseDNS. subbrute was integrated with Sublist3r to increase the possibility of finding more subdomains using bruteforce with an improved wordlist. The credit goes to TheRook who is the author of subbrute.",
     "source": "github",
     "id": "github-com-aboul3la-Sublist3r",
     "categories": [
       "subdomain",
       "recon"
-    ]
+    ],
+    "images": [
+      "https://camo.githubusercontent.com/ad4d6fc3d97b9d05593267ac6e6210075180a5262c9541e4ca7c0b38051a2920/687474703a2f2f7777772e7365636765656b2e6e65742f696d616765732f5375626c69737433722e706e67"
+    ],
+    "installation": []
   },
   {
     "title": "Amass",
     "url": "https://github.com/OWASP/Amass",
     "description": "In-depth Attack Surface Mapping and Asset Discovery",
+    "fullDescription": "The OWASP Amass Project performs network mapping of attack surfaces and external asset discovery using open source information gathering and active reconnaissance techniques.",
     "source": "github",
     "id": "github-com-OWASP-Amass",
     "categories": [
       "subdomain",
       "recon"
+    ],
+    "images": [
+      "https://github.com/OWASP/Amass/blob/master/images/amass_video.gif?raw=true"
     ]
   },
   {
@@ -32,7 +41,8 @@ DATA.TOOLS = [
     "categories": [
       "subdomain",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "Findomain",
@@ -43,7 +53,8 @@ DATA.TOOLS = [
     "categories": [
       "subdomain",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "Sudomy",
@@ -54,7 +65,8 @@ DATA.TOOLS = [
     "categories": [
       "subdomain",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "chaos-client",
@@ -65,7 +77,8 @@ DATA.TOOLS = [
     "categories": [
       "subdomain",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "domained",
@@ -76,7 +89,8 @@ DATA.TOOLS = [
     "categories": [
       "subdomain",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "bugcrowd-levelup-subdomain-enumeration",
@@ -87,7 +101,8 @@ DATA.TOOLS = [
     "categories": [
       "subdomain",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "shuffledns",
@@ -98,7 +113,8 @@ DATA.TOOLS = [
     "categories": [
       "subdomain",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "censys-subdomain-finder",
@@ -109,7 +125,8 @@ DATA.TOOLS = [
     "categories": [
       "subdomain",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "Turbolist3r",
@@ -120,7 +137,8 @@ DATA.TOOLS = [
     "categories": [
       "subdomain",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "masscan",
@@ -131,7 +149,8 @@ DATA.TOOLS = [
     "categories": [
       "port scanning",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "RustScan",
@@ -142,7 +161,8 @@ DATA.TOOLS = [
     "categories": [
       "port scanning",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "naabu",
@@ -153,7 +173,8 @@ DATA.TOOLS = [
     "categories": [
       "port scanning",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "nmap",
@@ -164,7 +185,8 @@ DATA.TOOLS = [
     "categories": [
       "port scanning",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "sandmap",
@@ -175,7 +197,8 @@ DATA.TOOLS = [
     "categories": [
       "port scanning",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "ScanCannon",
@@ -186,7 +209,8 @@ DATA.TOOLS = [
     "categories": [
       "port scanning",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "EyeWitness",
@@ -197,7 +221,8 @@ DATA.TOOLS = [
     "categories": [
       "screenshots",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "aquatone",
@@ -208,7 +233,8 @@ DATA.TOOLS = [
     "categories": [
       "screenshots",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "screenshoteer",
@@ -219,7 +245,8 @@ DATA.TOOLS = [
     "categories": [
       "screenshots",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "wappalyzer",
@@ -230,7 +257,8 @@ DATA.TOOLS = [
     "categories": [
       "technologies",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "webanalyze",
@@ -241,7 +269,8 @@ DATA.TOOLS = [
     "categories": [
       "technologies",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "python-builtwith",
@@ -252,7 +281,8 @@ DATA.TOOLS = [
     "categories": [
       "technologies",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "gobuster",
@@ -263,7 +293,8 @@ DATA.TOOLS = [
     "categories": [
       "content discovery",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "recursebuster",
@@ -274,7 +305,8 @@ DATA.TOOLS = [
     "categories": [
       "content discovery",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "feroxbuster",
@@ -285,7 +317,8 @@ DATA.TOOLS = [
     "categories": [
       "content discovery",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "dirsearch",
@@ -296,7 +329,8 @@ DATA.TOOLS = [
     "categories": [
       "content discovery",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "dirsearch",
@@ -307,7 +341,8 @@ DATA.TOOLS = [
     "categories": [
       "content discovery",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "LinkFinder",
@@ -318,7 +353,8 @@ DATA.TOOLS = [
     "categories": [
       "links",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "JS-Scan",
@@ -329,7 +365,8 @@ DATA.TOOLS = [
     "categories": [
       "links",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "LinksDumper",
@@ -340,7 +377,8 @@ DATA.TOOLS = [
     "categories": [
       "links",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "GoLinkFinder",
@@ -351,7 +389,8 @@ DATA.TOOLS = [
     "categories": [
       "links",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "BurpJSLinkFinder",
@@ -362,7 +401,8 @@ DATA.TOOLS = [
     "categories": [
       "links",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "urlgrab",
@@ -373,7 +413,8 @@ DATA.TOOLS = [
     "categories": [
       "links",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "parameth",
@@ -384,7 +425,8 @@ DATA.TOOLS = [
     "categories": [
       "parameters",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "param-miner",
@@ -395,7 +437,8 @@ DATA.TOOLS = [
     "categories": [
       "parameters",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "ParamPamPam",
@@ -406,7 +449,8 @@ DATA.TOOLS = [
     "categories": [
       "parameters",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "Arjun",
@@ -417,7 +461,8 @@ DATA.TOOLS = [
     "categories": [
       "parameters",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "ParamSpider",
@@ -428,7 +473,8 @@ DATA.TOOLS = [
     "categories": [
       "parameters",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "wfuzz",
@@ -439,7 +485,8 @@ DATA.TOOLS = [
     "categories": [
       "fuzzing",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "ffuf",
@@ -450,7 +497,8 @@ DATA.TOOLS = [
     "categories": [
       "fuzzing",
       "recon"
-    ]
+    ],
+    "images": []
   },
   {
     "title": "fuzzdb",
@@ -461,7 +509,8 @@ DATA.TOOLS = [
     "categories": [
       "fuzzing",
       "recon"
-    ]
+    ],
+    "images": []
   }
 ];
 

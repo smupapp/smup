@@ -18,11 +18,9 @@ const theme = {
 export default class Image extends React.Component {
 
   render() {
-    const inputTheme = {...theme, ...this.props}
+    const inputTheme = {...theme, ...this.props.theme}
     return (
-      <ThemeProvider theme={inputTheme}>
-        <StyledImage src={this.props.src} href={this.props.href} onClick={this.props.onClick} />
-      </ThemeProvider>
+      <StyledImage theme={inputTheme} src={this.props.src} href={this.props.href} onClick={this.props.onClick} />
     )
   }
 }

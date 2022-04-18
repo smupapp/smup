@@ -4,6 +4,7 @@ import { Card, Container, Image } from '../../../components';
 import { GridTitle, GridCardDescription } from '.';
 
 import { COLORS } from '../../../constants';
+import { Context } from '../../../lib';
 
 
 // TODO Move to constants
@@ -48,13 +49,28 @@ const STYLES = {
   }
 };
 
+const SELECTED_TOOL = 'selected_tool';
+
 
 class GridCard extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleOnClick = this.handleOnClick.bind(this);
+  }
+
+
+  handleOnClick(event) {
+
+    Context.set(SELECTED_TOOL, this.props.data);
+    this.props.onClick(event);
+  }
+
 
   render() {
 
     return (
-      <Container theme={STYLES.container} onClick={this.props.onClick}>
+      <Container theme={STYLES.container} onClick={this.handleOnClick}>
         <Card theme={STYLES.card}>
           <Container theme={STYLES.cardHead}>
             <Image margin='0px' src={IMAGE_URLS[this.props.data.source]} />
