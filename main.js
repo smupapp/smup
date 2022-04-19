@@ -11,8 +11,8 @@ const PLATFORM = process.platform;
 
 const EVENTS = {
   OPEN_EXTERNAL_LINK: 'open_external_link',
-  SETUP: 'app_setup',
-  SETUP_PROGRESS: 'app_setup_progress'
+  PRE_SETUP: 'pre_app_setup',
+  PRE_SETUP_PROGRESS: 'pre_app_setup_progress'
 };
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -77,7 +77,7 @@ const createWindow = () => {
 
 const initIPCListeners = () => {
   ipcMain.on(EVENTS.OPEN_EXTERNAL_LINK, openExternalLink);
-  ipcMain.on(EVENTS.SETUP, setupAppAsync);
+  ipcMain.on(EVENTS.PRE_SETUP, setupAppAsync);
 };
 
 
@@ -96,11 +96,13 @@ const setupAppAsync = async (event, data) => {
 const validatePrerequisitesAsync = async (prerequisites) => {
 
   sendSetupAppProgress({
-    progress: prerequisites.label,
+    label: prerequisites.label,
     state: 'inprogress'
   });
 
   for (const command of prerequisites.commands) {
+
+    await sleepAsync(1000);
 
     const platformCommand = get(command, ['command', PLATFORM]);
     if (!platformCommand) {
@@ -112,14 +114,14 @@ const validatePrerequisitesAsync = async (prerequisites) => {
     } catch (err) {
       const error = get(command, ['error']);
       sendSetupAppProgress({
-        progress: error,
+        label: error,
         state: 'error'
       });
     }
   }
 
   sendSetupAppProgress({
-    progress: 'Pre-requisites Verified',
+    label: 'Pre-requisites Verified',
     state: 'completed'
   });
 };
@@ -129,6 +131,13 @@ const validatePrerequisitesAsync = async (prerequisites) => {
 
 const sendSetupAppProgress = (data) => {
   mainWindow.webContents.send(EVENTS.SETUP_PROGRESS, data);
+}
+
+
+const sleepAsync = (ms) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }
 
 // This method will be called when Electron has finished

@@ -29,15 +29,39 @@ class Progress extends React.Component {
   }
 
   render() {
+
+    const data = this.props.data;
+
     return (
       <Container theme={STYLE.container}>
-        {this.props.data.map(data => {
-          return <Container key={data.label} theme={STYLE.row}>
-            <Container theme={STYLE.content}> 
-              <ProgressText title={data.title} active={data.active} state={data.state}>{data.label}</ProgressText>
-            </Container>
+        <Container key={data.info.label} theme={STYLE.row}>
+          <Container theme={STYLE.content}> 
+            <ProgressText title={data.info.title} active={data.info.active} state={data.info.state}>
+              {data.info.label}
+            </ProgressText>
           </Container>
-        })}
+        </Container>
+        <Container key={data.pre.label} theme={STYLE.row}>
+          <Container theme={STYLE.content}> 
+            <ProgressText title={data.pre.title} active={data.pre.active} state={data.pre.state}>
+              {data.pre.label}
+            </ProgressText>
+          </Container>
+        </Container>
+        <Container key={data.install.label} theme={STYLE.row}>
+          <Container theme={STYLE.content}> 
+            <ProgressText title={data.install.title} active={data.install.active} state={data.install.state}>
+              {data.install.label}
+            </ProgressText>
+          </Container>
+        </Container>
+        <Container key={data.post.label} theme={STYLE.row}>
+          <Container theme={STYLE.content}> 
+            <ProgressText title={data.post.title} active={data.post.active} state={data.post.state}>
+              {data.post.label}
+            </ProgressText>
+          </Container>
+        </Container>
       </Container>
     )
   }

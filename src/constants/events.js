@@ -1,7 +1,7 @@
 const EVENTS = {
   OPEN_EXTERNAL_LINK: 'open_external_link',
-  SETUP: 'app_setup',
-  SETUP_PROGRESS: 'app_setup_progress'
+  PRE_SETUP: 'pre_app_setup',
+  PRE_SETUP_PROGRESS: 'pre_app_setup_progress'
 };
 
 
