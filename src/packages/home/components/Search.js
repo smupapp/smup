@@ -18,7 +18,8 @@ const STYLE = {
     boxShadow: 'none',
     backgroundColor: `${COLORS.PALETTE.WHITE}`,
     border: `0.5px solid ${COLORS.PALETTE.BORDER_GRAY}`,
-    textAlign: 'left'
+    textAlign: 'left',
+    borderRadius: '2px'
   }
 };
 

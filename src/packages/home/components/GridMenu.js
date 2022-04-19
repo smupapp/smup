@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Container } from '../../../components';
 import { GridCard } from '.';
-import { Context } from '../../../lib';
 
 import { COLORS, DATA } from '../../../constants';
 
@@ -56,7 +55,7 @@ class Grid extends React.Component {
     // TODO Change to use _.filter
     for (let obj of data) {
 
-      const isNameMatched = this.compare(obj.name, query);
+      const isNameMatched = this.compare(obj.title, query);
       const isDescriptionMatched = this.compare(obj.description, query);
       const isSourceMatched = this.compare(obj.source, query);
       const isCategoryMatched = this.compare(obj.categories.join(','), query);

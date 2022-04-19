@@ -19,7 +19,7 @@ html, body {
 }
 
 input {
-  font-family: "Lexend", sans-serif;
+  font-family: "Lexend",sans-serif;
   font-variant: tabular-nums;
   font-style: normal;
   font-weight: 400;
@@ -29,14 +29,14 @@ input {
   font-family: "Lexend", sans-serif;
   font-variant: tabular-nums;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   color: #BBC2D1;
 }
 :-moz-placeholder {
   font-family: "Lexend", sans-serif;
   font-variant: tabular-nums;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 code {
