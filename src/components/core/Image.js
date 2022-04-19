@@ -11,8 +11,7 @@ const StyledImage = styled.img`
 
 const theme = {
   width: '50px',
-  hegiht: '50px',
-  margin: '10px',
+  hegiht: '50px'
 };
 
 export default class Image extends React.Component {
