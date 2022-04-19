@@ -2,7 +2,7 @@ import React from 'react';
 import { ipcRenderer } from 'electron';
 
 import { ButtonPrimary, ButtonSecondary, Container, Image } from '../../../components';
-import { Description, Title } from '.';
+import { Description, ProgressText, Title } from '.';
 
 import { COLORS, EVENTS } from '../../../constants';
 
@@ -49,17 +49,22 @@ const STYLES = {
   },
   button: {
     marginRight: '20px'
+  },
+  footer: {
+    width: '100%',
+    fontSize: '14px',
+    fontWeight: '400',
+    textAlign: 'left'
   }
 };
 
 
-let Component;
-
+let context;
 class Header extends React.Component {
   constructor(props) {
     super(props);
 
-    Component = this;
+    context = this;
     this.state = {};
 
     // this.initializeIpcListeners = this.addIPCListeneres.bind(this);
@@ -107,7 +112,11 @@ class Header extends React.Component {
 
   setupProgress(event, data) {
 
-    Component.setState({ progress: data });
+    if (!context) {
+      return;
+    }
+
+    context.setState({ ...data });
   }
 
 
@@ -130,7 +139,9 @@ class Header extends React.Component {
             <ButtonSecondary onClick={this.handleOpenDocs}>View Docs</ButtonSecondary>
           </Container>
         </Container>
-        <Description>{this.state.progress}</Description>
+        <Container theme={STYLES.footer}>
+          <ProgressText state={this.state.state}>{this.state.progress}</ProgressText>
+        </Container>
       </Container>
     );
   }

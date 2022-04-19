@@ -95,7 +95,10 @@ const setupAppAsync = async (event, data) => {
 
 const validatePrerequisitesAsync = async (prerequisites) => {
 
-  sendSetupAppProgress(prerequisites.label);
+  sendSetupAppProgress({
+    progress: prerequisites.label,
+    state: 'inprogress'
+  });
 
   for (const command of prerequisites.commands) {
 
@@ -108,11 +111,17 @@ const validatePrerequisitesAsync = async (prerequisites) => {
       await CommandExec(platformCommand);
     } catch (err) {
       const error = get(command, ['error']);
-      sendSetupAppProgress(error);
+      sendSetupAppProgress({
+        progress: error,
+        state: 'error'
+      });
     }
   }
 
-  sendSetupAppProgress('Prerequisites verified');
+  sendSetupAppProgress({
+    progress: 'Pre-requisites Verified',
+    state: 'completed'
+  });
 };
 
 
