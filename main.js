@@ -1,9 +1,19 @@
 'use strict';
 
 // Import parts of electron to use
-const { app, BrowserWindow } = require('electron');
-const path = require('path')
-const url = require('url')
+const { app, BrowserWindow, ipcMain, shell } = require('electron');
+const path = require('path');
+const url = require('url');
+const CommandExec = require('command-exec');
+const { get } = require('lodash');
+
+const PLATFORM = process.platform;
+
+const EVENTS = {
+  OPEN_EXTERNAL_LINK: 'open_external_link',
+  SETUP: 'app_setup',
+  SETUP_PROGRESS: 'app_setup_progress'
+};
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -15,7 +25,7 @@ if (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) |
   dev = true;
 }
 
-function createWindow() {
+const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 1024, height: 768, show: false,
@@ -59,6 +69,57 @@ function createWindow() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  initIPCListeners();
+}
+
+// ---------------------- LISTENERS -----------------------//
+
+const initIPCListeners = () => {
+  ipcMain.on(EVENTS.OPEN_EXTERNAL_LINK, openExternalLink);
+  ipcMain.on(EVENTS.SETUP, setupAppAsync);
+};
+
+
+const openExternalLink = (event, link) => {
+  shell.openExternal(link);
+};
+
+
+const setupAppAsync = async (event, data) => {
+
+  const { prerequisites, installation } = data;
+  await validatePrerequisitesAsync(prerequisites);  
+};
+
+
+const validatePrerequisitesAsync = async (prerequisites) => {
+
+  sendSetupAppProgress(prerequisites.label);
+
+  for (const command of prerequisites.commands) {
+
+    const platformCommand = get(command, ['command', PLATFORM]);
+    if (!platformCommand) {
+      return;
+    }
+
+    try {
+      await CommandExec(platformCommand);
+    } catch (err) {
+      const error = get(command, ['error']);
+      sendSetupAppProgress(error);
+    }
+  }
+
+  sendSetupAppProgress('Prerequisites verified');
+};
+
+
+// ---------------------- EMITTERS -----------------------//
+
+const sendSetupAppProgress = (data) => {
+  mainWindow.webContents.send(EVENTS.SETUP_PROGRESS, data);
 }
 
 // This method will be called when Electron has finished
@@ -70,7 +131,7 @@ app.on('ready', createWindow);
 app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
+  if (PLATFORM !== 'darwin') {
     app.quit();
   }
 });

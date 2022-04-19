@@ -16,20 +16,20 @@ DATA.TOOLS = [
       "https://camo.githubusercontent.com/ad4d6fc3d97b9d05593267ac6e6210075180a5262c9541e4ca7c0b38051a2920/687474703a2f2f7777772e7365636765656b2e6e65742f696d616765732f5375626c69737433722e706e67"
     ],
     "prerequisites": {
-      "label": "Pre-requisites",
+      "label": "Verifying Pre-requisites",
       "commands": [
         {
-          "label": "Python3 is required",
+          "error": "Python3 is required",
           "command": {
-            "darwin": "python3",
-            "linux": "python3"
+            "darwin": "python3 -V",
+            "linux": "python3 -V"
           }
         },
         {
-          "label": "Git is required",
+          "error": "Git is required",
           "command": {
-            "darwin": "git",
-            "linux": "git"
+            "darwin": "git --version",
+            "linux": "git --version"
           }
         },
       ]

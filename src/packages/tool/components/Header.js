@@ -1,9 +1,10 @@
 import React from 'react';
+import { ipcRenderer } from 'electron';
 
 import { ButtonPrimary, ButtonSecondary, Container, Image } from '../../../components';
 import { Description, Title } from '.';
 
-import { COLORS } from '../../../constants';
+import { COLORS, EVENTS } from '../../../constants';
 
 
 // TODO Move to constants
@@ -52,7 +53,63 @@ const STYLES = {
 };
 
 
+let Component;
+
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+
+    Component = this;
+    this.state = {};
+
+    // this.initializeIpcListeners = this.addIPCListeneres.bind(this);
+    this.handleOpenDocs = this.handleOpenDocs.bind(this);
+    this.handleOnSetup = this.handleOnSetup.bind(this);
+    this.setupProgress = this.setupProgress.bind(this);
+  }
+
+
+  componentDidMount() {
+    this.addIPCListeners();
+  }
+ 
+  componentWillUnmount() {
+    this.removeIPCListeners();
+  }
+
+
+  handleOpenDocs() {
+
+    ipcRenderer.send(EVENTS.OPEN_EXTERNAL_LINK, this.props.data.url);
+  }
+
+  
+  handleOnSetup() {
+
+    const data = {
+      prerequisites: this.props.data.prerequisites,
+      installation: this.props.data.installation
+    };
+
+    ipcRenderer.send(EVENTS.SETUP, data);
+  }
+
+
+  addIPCListeners() {
+    ipcRenderer.on(EVENTS.SETUP_PROGRESS, this.setupProgress);
+  }
+
+
+  removeIPCListeners() {
+    ipcRenderer.removeAllListeners(EVENTS.SETUP_PROGRESS);
+  }
+
+
+  setupProgress(event, data) {
+
+    Component.setState({ progress: data });
+  }
+
 
   render() {
 
@@ -67,12 +124,13 @@ class Header extends React.Component {
         </Container>
         <Container theme={STYLES.buttons}>
           <Container theme={STYLES.button}>
-            <ButtonPrimary>Setup this App</ButtonPrimary>
+            <ButtonPrimary onClick={this.handleOnSetup}>Setup this App</ButtonPrimary>
           </Container>
           <Container theme={STYLES.button}>
-            <ButtonSecondary>View Docs</ButtonSecondary>
+            <ButtonSecondary onClick={this.handleOpenDocs}>View Docs</ButtonSecondary>
           </Container>
         </Container>
+        <Description>{this.state.progress}</Description>
       </Container>
     );
   }
