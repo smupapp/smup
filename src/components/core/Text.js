@@ -11,6 +11,7 @@ const StyledText = styled.div`
   letter-spacing: ${props => props.theme.letterSpacing};
   line-height: ${props => props.theme.lineHeight};
   overflow: ${props => props.theme.overflow};
+  text-decoration: ${props => props.theme.textDecoration};
 `;
 
 const theme = {

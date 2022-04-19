@@ -2,7 +2,7 @@ import React from 'react';
 import { ipcRenderer } from 'electron';
 
 import { ButtonPrimary, ButtonSecondary, Container, Image } from '../../../components';
-import { Description, ProgressText, Title } from '.';
+import { Description, Progress, Title } from '.';
 
 import { COLORS, EVENTS } from '../../../constants';
 
@@ -15,6 +15,7 @@ const IMAGE_URLS = {
 
 const STYLES = {
   container: {
+    width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'left',
@@ -23,6 +24,7 @@ const STYLES = {
   },
   header: {
     display: 'flex',
+    flex: 4/5,
     flexDirection: 'column',
     alignItems: 'left',
     justifyContent: 'center',
@@ -51,8 +53,8 @@ const STYLES = {
     marginRight: '20px'
   },
   footer: {
+    flex: 1/3,
     width: '100%',
-    fontSize: '14px',
     fontWeight: '400',
     textAlign: 'left'
   }
@@ -65,7 +67,28 @@ class Header extends React.Component {
     super(props);
 
     context = this;
-    this.state = {};
+    this.state = {
+      data: [
+        {
+          state: 'info',
+          label: 'Setup in 3 steps',
+          active: true,
+          title: true
+        },
+        {
+          state: 'pending',
+          label: 'Verify Pre-requisites'
+        },
+        {
+          state: 'pending',
+          label: 'Install app'
+        },
+        {
+          state: 'pending',
+          label: 'Start Using'
+        }
+      ]
+    };
 
     // this.initializeIpcListeners = this.addIPCListeneres.bind(this);
     this.handleOpenDocs = this.handleOpenDocs.bind(this);
@@ -123,24 +146,26 @@ class Header extends React.Component {
   render() {
 
     return (
-      <Container theme={STYLES.header}>
-        <Container theme={STYLES.top}>
-          <Image margin='0px' height='70px' width='70px' src={IMAGE_URLS[this.props.data.source]} />
-          <Title>{this.props.data.title}</Title>
-        </Container>
-        <Container theme={STYLES.bottom}>
-          <Description>{this.props.data.description}</Description>
-        </Container>
-        <Container theme={STYLES.buttons}>
-          <Container theme={STYLES.button}>
-            <ButtonPrimary onClick={this.handleOnSetup}>Setup this App</ButtonPrimary>
+      <Container theme={STYLES.container}>
+        <Container theme={STYLES.header}>
+          <Container theme={STYLES.top}>
+            <Image margin='0px' height='70px' width='70px' src={IMAGE_URLS[this.props.data.source]} />
+            <Title>{this.props.data.title}</Title>
           </Container>
-          <Container theme={STYLES.button}>
-            <ButtonSecondary onClick={this.handleOpenDocs}>View Docs</ButtonSecondary>
+          <Container theme={STYLES.bottom}>
+            <Description>{this.props.data.description}</Description>
+          </Container>
+          <Container theme={STYLES.buttons}>
+            <Container theme={STYLES.button}>
+              <ButtonPrimary onClick={this.handleOnSetup}>Setup this App</ButtonPrimary>
+            </Container>
+            <Container theme={STYLES.button}>
+              <ButtonSecondary onClick={this.handleOpenDocs}>View Docs</ButtonSecondary>
+            </Container>
           </Container>
         </Container>
         <Container theme={STYLES.footer}>
-          <ProgressText state={this.state.state}>{this.state.progress}</ProgressText>
+          <Progress data={this.state.data} />
         </Container>
       </Container>
     );
