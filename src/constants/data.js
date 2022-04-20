@@ -6,12 +6,12 @@ DATA.TOOLS = [
     "url": "https://github.com/aboul3la/Sublist3r",
     "description": "Fast subdomains enumeration tool for penetration testers",
     "fullDescription": "Sublist3r is a python tool designed to enumerate subdomains of websites using OSINT. It helps penetration testers and bug hunters collect and gather subdomains for the domain they are targeting. Sublist3r enumerates subdomains using many search engines such as Google, Yahoo, Bing, Baidu and Ask. Sublist3r also enumerates subdomains using Netcraft, Virustotal, ThreatCrowd, DNSdumpster and ReverseDNS. subbrute was integrated with Sublist3r to increase the possibility of finding more subdomains using bruteforce with an improved wordlist. The credit goes to TheRook who is the author of subbrute.",
-    "installLocation": "/tmp/smup/Sublist3r/",
+    "installLocation": "$ cd /tmp/smup/Sublist3r/",
     "usages": [
-      "python3 /tmp/smup/Sublist3r/sublist3r.py -h",
-      "python3 /tmp/smup/Sublist3r/sublist3r.py -d example.com",
-      "python3 /tmp/smup/Sublist3r/sublist3r.py -d example.com -p 80,443",
-      "python3 /tmp/smup/Sublist3r/sublist3r.py -e google,yahoo,virustotal -d example.com"
+      "$ python3 /tmp/smup/Sublist3r/sublist3r.py -h",
+      "$ python3 /tmp/smup/Sublist3r/sublist3r.py -d example.com",
+      "$ python3 /tmp/smup/Sublist3r/sublist3r.py -d example.com -p 80,443",
+      "$ python3 /tmp/smup/Sublist3r/sublist3r.py -e google,yahoo,virustotal -d example.com"
     ],
     "source": "github",
     "id": "github-com-aboul3la-Sublist3r",
@@ -83,12 +83,12 @@ DATA.TOOLS = [
     "title": "Findomain",
     "url": "https://github.com/Findomain/Findomain",
     "description": "The fastest and cross-platform subdomain enumerator, do not waste your time.",
-    "installLocation": "/tmp/smup/Findomain",
+    "installLocation": "$ cd /tmp/smup/Findomain",
     "usages": [
-      "/tmp/smup/Findomain/findomain -t example.com",
-      "/tmp/smup/Findomain/findomain -t example.com -u subdomains.txt",
-      "/tmp/smup/Findomain/findomain -t example.com -r -u resolved-subdomains.txt",
-      "/tmp/smup/Findomain/findomain -f file_with_domains.txt"
+      "$ /tmp/smup/Findomain/findomain -t example.com",
+      "$ /tmp/smup/Findomain/findomain -t example.com -u subdomains.txt",
+      "$ /tmp/smup/Findomain/findomain -t example.com -r -u resolved-subdomains.txt",
+      "$ /tmp/smup/Findomain/findomain -f file_with_domains.txt"
     ],
     "source": "github",
     "id": "github-com-Findomain-Findomain",
@@ -139,28 +139,16 @@ DATA.TOOLS = [
     ]
   },
   {
-    "title": "Sudomy",
-    "url": "https://github.com/Screetsec/Sudomy",
-    "description": "Sudomy is a subdomain enumeration tool to collect subdomains and analyzing domains performing automated reconnaissance (recon) for bug hunting / pentesting",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-Screetsec-Sudomy",
-    "categories": [
-      "subdomain",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
     "title": "chaos-client",
     "url": "https://github.com/projectdiscovery/chaos-client",
     "description": "Go client to communicate with Chaos DNS API.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
+    "installLocation": "$ which chaos",
+    "usages": [
+      "$ chaos -d example.com",
+      "$ chaos -d example.com -silent",
+      "$ chaos -d example.com -o example.txt",
+      "$ chaos -dL domains.txt"
+    ],
     "source": "github",
     "id": "github-com-projectdiscovery-chaos-client",
     "categories": [
@@ -168,26 +156,46 @@ DATA.TOOLS = [
       "recon"
     ],
     "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "domained",
-    "url": "https://github.com/TypeError/domained",
-    "description": "Multi Tool Subdomain Enumeration",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-TypeError-domained",
-    "categories": [
-      "subdomain",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
+    "preInstall": {
+      "label": "Verifying installation of chaos",
+      "command": {
+        "darwin": "chaos -version",
+        "linux": "chaos -version"
+      }
+    },
+    "prerequisites": {
+      "label": "Verifying Pre-requisites",
+      "labelSuccess": "Pre-requisites Verified",
+      "commands": [
+        {
+          "error": "go is required",
+          "command": {
+            "darwin": "go version",
+            "linux": "go version"
+          }
+        }
+      ]
+    },
+    "installation": [
+      {
+        "label": "Install Chaos",
+        "labelSuccess": "Chaos installed",
+        "error": "Chaos installation failed",
+        "command": {
+          "darwin": "go install github.com/projectdiscovery/chaos-client/cmd/chaos@latest",
+          "linux": "go install github.com/projectdiscovery/chaos-client/cmd/chaos@latest"
+        },
+      },
+      {
+        "label": "Verifying command chaos",
+        "labelSuccess": "App is ready to use",
+        "error": "App not installed",
+        "command": {
+          "darwin": "chaos -v",
+          "linux": "chaos -v"
+        }
+      }
+    ]
   },
   {
     "title": "bugcrowd-levelup-subdomain-enumeration",

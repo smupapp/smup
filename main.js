@@ -95,6 +95,7 @@ const initIPCListeners = () => {
 
 
 const openExternalLink = (event, link) => {
+  console.log(link);
   shell.openExternal(link);
 };
 
@@ -152,10 +153,10 @@ const validatePrerequisitesAsync = async (prerequisites) => {
     try {
       await CommandExec(platformCommand);
     } catch (err) {
-      
-      const error = get(command, ['error']);
+
+      console.log(err);
       sendPreAppSetupProgress({
-        label: error,
+        label: get(command, ['error']),
         state: STATES.ERROR
       });
 
@@ -192,7 +193,7 @@ const installAsync = async (installation) => {
 
     try {
       console.log(`Running: ${platformCommand}`);
-      CommandExec(platformCommand);
+      await CommandExec(platformCommand);
       labelSucess = install.labelSuccess;
     } catch (err) {
 

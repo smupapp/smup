@@ -89,7 +89,7 @@ class Header extends React.Component {
 
     context = this;
     this.state = {
-      data: DATA,
+      data: { ...DATA },
       installed: false
     };
 
