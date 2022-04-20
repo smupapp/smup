@@ -23,7 +23,7 @@ DATA.TOOLS = [
       "https://camo.githubusercontent.com/ad4d6fc3d97b9d05593267ac6e6210075180a5262c9541e4ca7c0b38051a2920/687474703a2f2f7777772e7365636765656b2e6e65742f696d616765732f5375626c69737433722e706e67"
     ],
     "preInstall": {
-      "label": "Verifying command sublist3r",
+      "label": "Verifying installation of sublist3r",
       "command": {
         "darwin": "python3 /tmp/smup/Sublist3r/sublist3r.py -h",
         "linux": "python3 /tmp/smup/Sublist3r/sublist3r.py -h"
@@ -80,48 +80,16 @@ DATA.TOOLS = [
     ]
   },
   {
-    "title": "Amass",
-    "url": "https://github.com/OWASP/Amass",
-    "description": "In-depth Attack Surface Mapping and Asset Discovery",
-    "fullDescription": "The OWASP Amass Project performs network mapping of attack surfaces and external asset discovery using open source information gathering and active reconnaissance techniques.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-OWASP-Amass",
-    "categories": [
-      "subdomain",
-      "recon"
-    ],
-    "images": [
-      "https://github.com/OWASP/Amass/blob/master/images/amass_video.gif?raw=true"
-    ],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "massdns",
-    "url": "https://github.com/blechschmidt/massdns",
-    "description": "A high-performance DNS stub resolver for bulk lookups and reconnaissance (subdomain enumeration)",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-blechschmidt-massdns",
-    "categories": [
-      "subdomain",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
     "title": "Findomain",
     "url": "https://github.com/Findomain/Findomain",
     "description": "The fastest and cross-platform subdomain enumerator, do not waste your time.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
+    "installLocation": "/tmp/smup/Findomain",
+    "usages": [
+      "/tmp/smup/Findomain/findomain -t example.com",
+      "/tmp/smup/Findomain/findomain -t example.com -u subdomains.txt",
+      "/tmp/smup/Findomain/findomain -t example.com -r -u resolved-subdomains.txt",
+      "/tmp/smup/Findomain/findomain -f file_with_domains.txt"
+    ],
     "source": "github",
     "id": "github-com-Findomain-Findomain",
     "categories": [
@@ -129,9 +97,46 @@ DATA.TOOLS = [
       "recon"
     ],
     "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
+    "preInstall": {
+      "label": "Verifying installation of finddomain",
+      "command": {
+        "darwin": "/tmp/smup/Findomain/findomain -V",
+        "linux": "/tmp/smup/Findomain/findomain -V"
+      }
+    },
+    "prerequisites": {
+      "label": "Verifying Pre-requisites",
+      "labelSuccess": "Pre-requisites Verified",
+      "commands": [
+        {
+          "error": "wget is required",
+          "command": {
+            "darwin": "wget --version",
+            "linux": "wget --version"
+          }
+        }
+      ]
+    },
+    "installation": [
+      {
+        "label": "Download Findomain binary",
+        "labelSuccess": "Findomain binary downloaded",
+        "error": "Download of binary failed",
+        "command": {
+          "darwin": "rm -rf /tmp/smup/Findomain && mkdir -p /tmp/smup/Findomain && cd /tmp/smup/Findomain && wget -O findomain --quiet https://github.com/findomain/findomain/releases/latest/download/findomain-osx && chmod +x findomain",
+          "linux": "rm -rf /tmp/smup/Findomain && mkdir -p /tmp/smup/Findomain && cd /tmp/smup/Findomain && wget -O findomain --quiet https://github.com/findomain/findomain/releases/latest/download/findomain-linux && chmod +x findomain"
+        },
+      },
+      {
+        "label": "Verifying command findomain",
+        "labelSuccess": "App is ready to use",
+        "error": "App not installed",
+        "command": {
+          "darwin": "/tmp/smup/Findomain/findomain --version",
+          "linux": "/tmp/smup/Findomain/findomain --version"
+        }
+      }
+    ]
   },
   {
     "title": "Sudomy",

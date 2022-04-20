@@ -176,6 +176,7 @@ class Header extends React.Component {
     const data = this.state.data;
     for (let key in data) {
       data[key].state = STATES.COMPLETED;
+      data[key].active = true;
     }
 
     context.setState({ data, installed: true });
