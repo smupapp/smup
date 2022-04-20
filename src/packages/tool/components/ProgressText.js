@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Container, Text } from '../../../components';
-import { Circle, CircleChecked } from '../../../components/icons';
+import { Circle, CircleChecked, CircleCross, CircleLoader } from '../../../components/icons';
 
-import { COLORS } from '../../../constants';
+import { COLORS, STATES } from '../../../constants';
 
 
 // TODO Move constants
@@ -24,7 +24,21 @@ const STYLE = {
     width: '12px',
     height: '12px',
     marginRight: '10px',
-    color: COLORS.PALETTE.PRIMARY
+    color: COLORS.PALETTE.PRIMARY_DARK
+  },
+  success: {
+    fontSize: '12px',
+    width: '12px',
+    height: '12px',
+    marginRight: '10px',
+    color: COLORS.PALETTE.SUCCESS
+  },
+  error: {
+    fontSize: '15px',
+    width: '15px',
+    height: '15px',
+    marginRight: '10px',
+    color: COLORS.PALETTE.FAIL
   },
   text: {
     fontSize: '14px',
@@ -42,10 +56,19 @@ class ProgressText extends React.Component {
 
   getIcon() {
 
-    if (this.props.state === 'completed') {
-      return (
-        <CircleChecked theme={STYLE.image} />
-      )
+    switch (this.props.state) {
+      case STATES.COMPLETED:
+        return (
+          <CircleChecked theme={STYLE.success} />
+        )
+      case STATES.INPROGRESS:
+        return (
+          <CircleLoader theme={STYLE.image} />
+        )
+      case STATES.ERROR:
+        return (
+          <CircleCross theme={STYLE.error} />
+        )
     }
 
     return (

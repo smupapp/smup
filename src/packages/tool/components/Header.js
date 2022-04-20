@@ -4,13 +4,34 @@ import { ipcRenderer } from 'electron';
 import { ButtonPrimary, ButtonSecondary, Container, Image } from '../../../components';
 import { Description, Progress, Title } from '.';
 
-import { COLORS, EVENTS } from '../../../constants';
+import { COLORS, EVENTS, STATES } from '../../../constants';
 
 
 // TODO Move to constants
 const IMAGE_URLS = {
   'github': 'https://cdn.iconscout.com/icon/free/png-256/github-3215409-2673827.png'
 };
+
+const DATA = {
+  info: {
+    state: STATES.COMPLETED,
+    label: 'Setup in 3 steps',
+    active: true,
+    title: true
+  },
+  pre: {
+    state: STATES.PENDING,
+    label: 'Verify Pre-requisites'
+  },
+  install: {
+    state: STATES.PENDING,
+    label: 'Install app'
+  },
+  post: {
+    state: STATES.PENDING,
+    label: 'Start using app'
+  }
+}
 
 
 const STYLES = {
@@ -68,37 +89,23 @@ class Header extends React.Component {
 
     context = this;
     this.state = {
-      data: {
-        info: {
-          state: 'completed',
-          label: 'Setup in 3 steps',
-          active: true,
-          title: true
-        },
-        pre: {
-          state: 'pending',
-          label: 'Verify Pre-requisites'
-        },
-        install: {
-          state: 'pending',
-          label: 'Install app'
-        },
-        post: {
-          state: 'pending',
-          label: 'Start using app'
-        }
-      }
+      data: DATA,
+      installed: false
     };
 
-    // this.initializeIpcListeners = this.addIPCListeneres.bind(this);
+    this.sendEvent = this.sendEvent.bind(this);
     this.handleOpenDocs = this.handleOpenDocs.bind(this);
     this.handleOnSetup = this.handleOnSetup.bind(this);
+    this.preInstallCheck = this.preInstallCheck.bind(this);
+    this.preInstallStatusProgress = this.preInstallStatusProgress.bind(this);
     this.preSetupProgress = this.preSetupProgress.bind(this);
+    this.setupProgress = this.setupProgress.bind(this);
   }
 
 
   componentDidMount() {
     this.addIPCListeners();
+    this.preInstallCheck();
   }
  
   componentWillUnmount() {
@@ -106,31 +113,73 @@ class Header extends React.Component {
   }
 
 
-  handleOpenDocs() {
+  addIPCListeners() {
+    this.addListener(EVENTS.PRE_SETUP_PROGRESS, this.preSetupProgress);
+    this.addListener(EVENTS.PRE_INSTALLED, this.preInstallStatusProgress);
+    this.addListener(EVENTS.SETUP_PROGRESS, this.setupProgress);
+  }
 
-    ipcRenderer.send(EVENTS.OPEN_EXTERNAL_LINK, this.props.data.url);
+
+  removeIPCListeners() {
+    this.removeListener(EVENTS.PRE_SETUP_PROGRESS);
+    this.removeListener(EVENTS.PRE_INSTALLED);
+    
+  }
+
+
+  addListener(name, func) {
+    ipcRenderer.on(name, func);
+  }
+
+
+  removeListener(name) {
+    ipcRenderer.removeAllListeners(name);
+  }
+
+
+  sendEvent(name, data) {
+    ipcRenderer.send(name, data);
+  }
+
+
+  handleOpenDocs() {
+    this.sendEvent(EVENTS.OPEN_EXTERNAL_LINK, this.props.data.url);
   }
 
   
   handleOnSetup() {
 
-    const data = {
-      prerequisites: this.props.data.prerequisites,
-      installation: this.props.data.installation
-    };
+    if (this.state.installed) {
+      return;
+    }
 
-    ipcRenderer.send(EVENTS.PRE_SETUP, data);
+    this.sendEvent(EVENTS.PRE_SETUP, this.props.data.prerequisites);
   }
 
 
-  addIPCListeners() {
-    ipcRenderer.on(EVENTS.PRE_SETUP_PROGRESS, this.preSetupProgress);
+  preInstallCheck() {
+    this.sendEvent(EVENTS.PRE_INSTALL, this.props.data.preInstall);
   }
 
 
-  removeIPCListeners() {
-    ipcRenderer.removeAllListeners(EVENTS.PRE_SETUP_PROGRESS);
-  }
+  preInstallStatusProgress(event, status) {
+
+    if (!context) {
+      return;
+    }
+
+    if (!status) {
+      context.setState({ data: DATA, installed: false });
+      return;
+    }
+
+    const data = this.state.data;
+    for (let key in data) {
+      data[key].state = STATES.COMPLETED;
+    }
+
+    context.setState({ data, installed: true });
+  };
 
 
   preSetupProgress(event, input) {
@@ -139,7 +188,7 @@ class Header extends React.Component {
       return;
     }
 
-    const active = input.state === 'completed';
+    const active = input.state === STATES.COMPLETED;
 
     const data = this.state.data;
     data.pre = {
@@ -147,6 +196,34 @@ class Header extends React.Component {
       ...input,
       active
     };
+
+    context.setState({ data: data });
+
+    if (input.state === STATES.COMPLETED) {
+      this.sendEvent(EVENTS.SETUP, this.props.data.installation);
+    }
+  }
+
+
+  setupProgress(event, input) {
+
+    if (!context) {
+      return;
+    }
+
+    const data = this.state.data;
+    const active = input.state === STATES.COMPLETED;
+
+    data.install = {...data.install, ...input, active};
+
+    if (input.state === STATES.COMPLETED) {
+      data.post = {
+        ...data.post, 
+        active, state: input.state
+      }
+
+      context.setState({ installed: true });
+    }
 
     context.setState({ data: data });
   }
@@ -166,7 +243,7 @@ class Header extends React.Component {
           </Container>
           <Container theme={STYLES.buttons}>
             <Container theme={STYLES.button}>
-              <ButtonPrimary onClick={this.handleOnSetup}>Setup this App</ButtonPrimary>
+              <ButtonPrimary onClick={this.handleOnSetup}>{this.state.installed ? 'App Installed' : 'Setup this App'}</ButtonPrimary>
             </Container>
             <Container theme={STYLES.button}>
               <ButtonSecondary onClick={this.handleOpenDocs}>View Docs</ButtonSecondary>

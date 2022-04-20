@@ -11,8 +11,19 @@ const PLATFORM = process.platform;
 
 const EVENTS = {
   OPEN_EXTERNAL_LINK: 'open_external_link',
+  PRE_INSTALL: 'pre_is_app_install',
+  PRE_INSTALLED: 'pre_app_installed',
   PRE_SETUP: 'pre_app_setup',
-  PRE_SETUP_PROGRESS: 'pre_app_setup_progress'
+  PRE_SETUP_PROGRESS: 'pre_app_setup_progress',
+  SETUP: 'app_setup',
+  SETUP_PROGRESS: 'app_setup_progress'
+};
+
+const STATES = {
+  INPROGRESS: 'inprogress',
+  COMPLETED: 'completed',
+  PENDING: 'pending',
+  ERROR: 'error'
 };
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -77,7 +88,9 @@ const createWindow = () => {
 
 const initIPCListeners = () => {
   ipcMain.on(EVENTS.OPEN_EXTERNAL_LINK, openExternalLink);
-  ipcMain.on(EVENTS.PRE_SETUP, setupAppAsync);
+  ipcMain.on(EVENTS.PRE_INSTALL, isAppInstalledAsync);
+  ipcMain.on(EVENTS.PRE_SETUP, preAppSetupAsync);
+  ipcMain.on(EVENTS.SETUP, appSetupAsync);
 };
 
 
@@ -86,19 +99,46 @@ const openExternalLink = (event, link) => {
 };
 
 
-const setupAppAsync = async (event, data) => {
+const isAppInstalledAsync = async (event, preInstall) => {
+  await validatePreInstallAsync(preInstall)
+};
 
-  const { prerequisites, installation } = data;
-  await validatePrerequisitesAsync(prerequisites);  
+
+const preAppSetupAsync = async (event, prerequisites) => {
+  await validatePrerequisitesAsync(prerequisites)
+};
+
+
+const appSetupAsync = async (event, installation) => {
+  try {
+    await installAsync(installation);
+  } catch (err) {
+    console.log('appSetupAsync', err);
+  }
+};
+
+
+const validatePreInstallAsync = async (preInstall) => {
+
+  const platformCommand = get(preInstall, ['command', PLATFORM]);
+
+  try {
+    await CommandExec(platformCommand);
+    sendAppInstalledStatus(true);
+  } catch (err) {
+    sendAppInstalledStatus(false);
+  }
 };
 
 
 const validatePrerequisitesAsync = async (prerequisites) => {
 
-  sendSetupAppProgress({
+  sendPreAppSetupProgress({
     label: prerequisites.label,
-    state: 'inprogress'
+    state: STATES.INPROGRESS
   });
+
+  console.log(prerequisites);
 
   for (const command of prerequisites.commands) {
 
@@ -112,26 +152,90 @@ const validatePrerequisitesAsync = async (prerequisites) => {
     try {
       await CommandExec(platformCommand);
     } catch (err) {
+      
       const error = get(command, ['error']);
-      sendSetupAppProgress({
+      sendPreAppSetupProgress({
         label: error,
-        state: 'error'
+        state: STATES.ERROR
       });
+
+      return;
     }
   }
 
-  sendSetupAppProgress({
-    label: 'Pre-requisites Verified',
-    state: 'completed'
+  sendPreAppSetupProgress({
+    label: prerequisites.labelSuccess,
+    state: STATES.COMPLETED
+  });
+
+  return true;
+};
+
+
+const installAsync = async (installation) => {
+
+  let labelSucess = '';
+
+  for (const install of installation) {
+
+    sendAppSetupProgress({
+      label: install.label,
+      state: STATES.INPROGRESS
+    });
+
+    await sleepAsync(1000);
+
+    const platformCommand = get(install, ['command', PLATFORM]);
+    if (!platformCommand) {
+      return;
+    }
+
+    try {
+      console.log(`Running: ${platformCommand}`);
+      CommandExec(platformCommand);
+      labelSucess = install.labelSuccess;
+    } catch (err) {
+
+      console.log('installAsync', err);
+      
+      const error = get(install, ['error']);
+      sendAppSetupProgress({
+        label: error,
+        state: STATES.ERROR
+      });
+
+      return;
+    }
+  }
+
+  sendAppSetupProgress({
+    label: labelSucess,
+    state: STATES.COMPLETED
   });
 };
 
 
 // ---------------------- EMITTERS -----------------------//
 
-const sendSetupAppProgress = (data) => {
-  mainWindow.webContents.send(EVENTS.SETUP_PROGRESS, data);
+const sendPreAppSetupProgress = (data) => {
+  console.log('sending', 'pre setup progress', data);
+  sendEvent(EVENTS.PRE_SETUP_PROGRESS, data);
 }
+
+
+const sendAppInstalledStatus = (status) => {
+  sendEvent(EVENTS.PRE_INSTALLED, status);
+};
+
+
+const sendAppSetupProgress = (data) => {
+  sendEvent(EVENTS.SETUP_PROGRESS, data);
+}
+
+
+const sendEvent = (name, data) => {
+  mainWindow.webContents.send(name, data);
+};
 
 
 const sleepAsync = (ms) => {
