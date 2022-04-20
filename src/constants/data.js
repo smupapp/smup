@@ -142,12 +142,12 @@ DATA.TOOLS = [
     "title": "chaos-client",
     "url": "https://github.com/projectdiscovery/chaos-client",
     "description": "Go client to communicate with Chaos DNS API.",
-    "installLocation": "$ which chaos",
+    "installLocation": "$ cd /tmp/smup/Chaos",
     "usages": [
-      "$ chaos -d example.com",
-      "$ chaos -d example.com -silent",
-      "$ chaos -d example.com -o example.txt",
-      "$ chaos -dL domains.txt"
+      "$ /tmp/smup/Chaos/chaos -d example.com",
+      "$ /tmp/smup/Chaos/chaos -d example.com -silent",
+      "$ /tmp/smup/Chaos/chaos -d example.com -o example.txt",
+      "$ /tmp/smup/Chaos/chaos -dL domains.txt"
     ],
     "source": "github",
     "id": "github-com-projectdiscovery-chaos-client",
@@ -159,8 +159,8 @@ DATA.TOOLS = [
     "preInstall": {
       "label": "Verifying installation of chaos",
       "command": {
-        "darwin": "chaos -version",
-        "linux": "chaos -version"
+        "darwin": "/tmp/smup/Chaos/chaos -version",
+        "linux": "/tmp/smup/Chaos/chaos -version"
       }
     },
     "prerequisites": {
@@ -168,10 +168,10 @@ DATA.TOOLS = [
       "labelSuccess": "Pre-requisites Verified",
       "commands": [
         {
-          "error": "go is required",
+          "error": "wget is required",
           "command": {
-            "darwin": "go version",
-            "linux": "go version"
+            "darwin": "wget --version",
+            "linux": "wget --version"
           }
         }
       ]
@@ -182,8 +182,8 @@ DATA.TOOLS = [
         "labelSuccess": "Chaos installed",
         "error": "Chaos installation failed",
         "command": {
-          "darwin": "go install github.com/projectdiscovery/chaos-client/cmd/chaos@latest",
-          "linux": "go install github.com/projectdiscovery/chaos-client/cmd/chaos@latest"
+          "darwin": "rm -rf Chaos && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O chaos.zip --quiet https://github.com/projectdiscovery/chaos-client/releases/download/v0.2.0/chaos-client_0.2.0_macOS_amd64.zip && unzip -d Chaos chaos.zip && rm -rf chaos.zip && mv Chaos/chaos-client Chaos/chaos",
+          "linux": "rm -rf Chaos && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O chaos.zip --quiet https://github.com/projectdiscovery/chaos-client/releases/download/v0.2.0/chaos-client_0.2.0_linux_amd64.zip && unzip -d Chaos chaos.zip && rm -rf chaos.zip && mv Chaos/chaos-client Chaos/chaos"
         },
       },
       {
@@ -191,28 +191,11 @@ DATA.TOOLS = [
         "labelSuccess": "App is ready to use",
         "error": "App not installed",
         "command": {
-          "darwin": "chaos -v",
-          "linux": "chaos -v"
+          "darwin": "/tmp/smup/Chaos/chaos -version",
+          "linux": "/tmp/smup/Chaos/chaos -version"
         }
       }
     ]
-  },
-  {
-    "title": "bugcrowd-levelup-subdomain-enumeration",
-    "url": "https://github.com/appsecco/bugcrowd-levelup-subdomain-enumeration",
-    "description": "This repository contains all the material from the talk \"Esoteric sub-domain enumeration techniques\" given at Bugcrowd LevelUp 2017 virtual conference",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-appsecco-bugcrowd-levelup-subdomain-enumeration",
-    "categories": [
-      "subdomain",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
   },
   {
     "title": "shuffledns",
