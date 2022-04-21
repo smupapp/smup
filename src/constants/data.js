@@ -204,7 +204,7 @@ DATA.TOOLS = [
     "title": "naabu",
     "url": "https://github.com/projectdiscovery/naabu",
     "description": "A fast port scanner written in go with focus on reliability and simplicity.",
-    "installLocation": "/tmp/smup/Naabu",
+    "installLocation": "$ cd /tmp/smup/Naabu",
     "usages": [
       "$ /tmp/smup/Naabu/naabu -p 80,443,21-23 -host example.com",
       "$ /tmp/smup/Naabu/naabu -list hosts.txt",
@@ -265,8 +265,12 @@ DATA.TOOLS = [
     "title": "webanalyze",
     "url": "https://github.com/rverton/webanalyze",
     "description": "Port of Wappalyzer (uncovers technologies used on websites) to automate mass scanning.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
+    "installLocation": "$ cd /tmp/smup/WebAnalyze",
+    "usages": [
+      "$ /tmp/smup/WebAnalyze/webanalyze -update # loads new technologies.json file from wappalyzer project",
+      "$ /tmp/smup/WebAnalyze/webanalyze -host example.com -crawl 1",
+      "$ /tmp/smup/WebAnalyze/webanalyze -host example.com -crawl 1 -output csv"
+    ],
     "source": "github",
     "id": "github-com-rverton-webanalyze",
     "categories": [

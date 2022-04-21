@@ -41,7 +41,7 @@ const STYLES = {
   },
   body: {
     main: {
-      width: '70%',
+      width: '100%',
       display: 'flex',
       overflow: 'hidden',
       alignItems: 'left',

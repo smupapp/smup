@@ -122,6 +122,9 @@ const appSetupAsync = async (event, installation) => {
 const validatePreInstallAsync = async (preInstall) => {
 
   const platformCommand = get(preInstall, ['command', PLATFORM]);
+  if (!platformCommand) {
+    sendAppInstalledStatus(false);
+  }
 
   try {
     await CommandExec(platformCommand);
