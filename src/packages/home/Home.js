@@ -66,10 +66,10 @@ class Home extends React.Component {
             <Title>Bug Bounty Tools</Title>
             <Description>100+ bug bounty tools to speed up your bug hunting</Description>
           </Container>
-          {/* <Container theme={STYLES.container.middle}>
+          <Container theme={STYLES.container.middle}>
             <Search onChange={this.handleOnChange} value={this.state.query}>Search tools from the directory</Search>
-          </Container> */}
-          <CategoriesRow />
+          </Container>
+          {/* <CategoriesRow /> */}
           <GridMenu onClick={this.props.onClick} query={this.state.query} />
         </Container>
       </React.Fragment>

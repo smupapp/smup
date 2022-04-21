@@ -262,40 +262,6 @@ DATA.TOOLS = [
     ]
   },
   {
-    "title": "screenshoteer",
-    "url": "https://github.com/vladocar/screenshoteer",
-    "description": "Make website screenshots and mobile emulations from the command line.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-vladocar-screenshoteer",
-    "categories": [
-      "screenshots",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "wappalyzer",
-    "url": "https://github.com/AliasIO/wappalyzer",
-    "description": "Identify technology on websites.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-AliasIO-wappalyzer",
-    "categories": [
-      "technologies",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
     "title": "webanalyze",
     "url": "https://github.com/rverton/webanalyze",
     "description": "Port of Wappalyzer (uncovers technologies used on websites) to automate mass scanning.",
@@ -308,26 +274,46 @@ DATA.TOOLS = [
       "recon"
     ],
     "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "python-builtwith",
-    "url": "https://github.com/claymation/python-builtwith",
-    "description": "BuiltWith API client",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-claymation-python-builtwith",
-    "categories": [
-      "technologies",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
+    "preInstall": {
+      "label": "Verifying installation of webanalyze",
+      "command": {
+        "darwin": "/tmp/smup/WebAnalyze/webanalyze",
+        "linux": "/tmp/smup/WebAnalyze/webanalyze"
+      }
+    },
+    "prerequisites": {
+      "label": "Verifying Pre-requisites",
+      "labelSuccess": "Pre-requisites Verified",
+      "commands": [
+        {
+          "error": "wget is required",
+          "command": {
+            "darwin": "wget --version",
+            "linux": "wget --version"
+          }
+        }
+      ]
+    },
+    "installation": [
+      {
+        "label": "Install WebAnalyze",
+        "labelSuccess": "WebAnalyze installed",
+        "error": "WebAnalyze installation failed",
+        "command": {
+          "darwin": "rm -rf /tmp/smup/WebAnalyze && mkdir -p /tmp/smup/WebAnalyze && cd /tmp/smup/ && wget -O webanalyze.tar.gz --quiet https://github.com/rverton/webanalyze/releases/download/v0.3.6/webanalyze_0.3.6_Darwin_x86_64.tar.gz && tar -xvzf webanalyze.tar.gz -C WebAnalyze && rm webanalyze.tar.gz",
+          "linux": "rm -rf /tmp/smup/WebAnalyze && mkdir -p /tmp/smup/WebAnalyze && cd /tmp/smup/ && wget -O webanalyze.tar.gz --quiet https://github.com/rverton/webanalyze/releases/download/v0.3.6/webanalyze_0.3.6_Linux_x86_64.tar.gz && tar -xvzf webanalyze.tar.gz -C WebAnalyze && rm webanalyze.tar.gz"
+        },
+      },
+      {
+        "label": "Verifying command naabu",
+        "labelSuccess": "App is ready to use",
+        "error": "App not installed",
+        "command": {
+          "darwin": "/tmp/smup/WebAnalyze/webanalyze",
+          "linux": "/tmp/smup/WebAnalyze/webanalyze"
+        }
+      }
+    ]
   },
   {
     "title": "gobuster",
