@@ -185,8 +185,8 @@ DATA.TOOLS = [
         "labelSuccess": "Chaos installed",
         "error": "Chaos installation failed",
         "command": {
-          "darwin": "rm -rf /tmp/smup/Chaos && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O chaos.zip --quiet https://github.com/projectdiscovery/chaos-client/releases/download/v0.2.0/chaos-client_0.2.0_macOS_amd64.zip && unzip -d Chaos chaos.zip && rm -rf chaos.zip && mv Chaos/chaos-client Chaos/chaos",
-          "linux": "rm -rf /tmp/smup/Chaos && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O chaos.zip --quiet https://github.com/projectdiscovery/chaos-client/releases/download/v0.2.0/chaos-client_0.2.0_linux_amd64.zip && unzip -d Chaos chaos.zip && rm -rf chaos.zip && mv Chaos/chaos-client Chaos/chaos"
+          "darwin": "rm -rf /tmp/smup/Chaos && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O chaos.zip --quiet https://github.com/projectdiscovery/chaos-client/releases/download/v0.2.0/chaos-client_0.2.0_macOS_amd64.zip && unzip -d Chaos chaos.zip && rm chaos.zip && mv Chaos/chaos-client Chaos/chaos",
+          "linux": "rm -rf /tmp/smup/Chaos && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O chaos.zip --quiet https://github.com/projectdiscovery/chaos-client/releases/download/v0.2.0/chaos-client_0.2.0_linux_amd64.zip && unzip -d Chaos chaos.zip && rm chaos.zip && mv Chaos/chaos-client Chaos/chaos"
         },
       },
       {
@@ -320,45 +320,16 @@ DATA.TOOLS = [
     ]
   },
   {
-    "title": "gobuster",
-    "url": "https://github.com/OJ/gobuster",
-    "description": "Directory/File, DNS and VHost busting tool written in Go",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-OJ-gobuster",
-    "categories": [
-      "content discovery",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "recursebuster",
-    "url": "https://github.com/C-Sto/recursebuster",
-    "description": "rapid content discovery tool for recursively querying webservers, handy in pentesting and web application assessments",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-C-Sto-recursebuster",
-    "categories": [
-      "content discovery",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
     "title": "feroxbuster",
     "url": "https://github.com/epi052/feroxbuster",
     "description": "A fast, simple, recursive content discovery tool written in Rust.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
+    "installLocation": "$ cd /tmp/smup/FeroxBuster/",
+    "usages": [
+      "$ /tmp/smup/FeroxBuster/feroxbuster -u http://example.com -x pdf -x js,html -x php txt json,docx",
+      "$ cat targets | /tmp/smup/FeroxBuster/feroxbuster --stdin --silent -s 200 301 302 --redirects -x js",
+      "$ /tmp/smup/FeroxBuster/feroxbuster -u http://example.com --insecure --proxy http://127.0.0.1:8080",
+      "$ /tmp/smup/FeroxBuster/feroxbuster -u http://example.com --query token=0123456789ABCDEF"
+    ],
     "source": "github",
     "id": "github-com-epi052-feroxbuster",
     "categories": [
@@ -366,9 +337,46 @@ DATA.TOOLS = [
       "recon"
     ],
     "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
+    "preInstall": {
+      "label": "Verifying installation of naabu",
+      "command": {
+        "darwin": "/tmp/smup/FeroxBuster/feroxbuster --help",
+        "linux": "/tmp/smup/FeroxBuster/feroxbuster --help"
+      }
+    },
+    "prerequisites": {
+      "label": "Verifying Pre-requisites",
+      "labelSuccess": "Pre-requisites Verified",
+      "commands": [
+        {
+          "error": "wget is required",
+          "command": {
+            "darwin": "wget --version",
+            "linux": "wget --version"
+          }
+        }
+      ]
+    },
+    "installation": [
+      {
+        "label": "Install FeroxBuster",
+        "labelSuccess": "FeroxBuster installed",
+        "error": "FeroxBuster installation failed",
+        "command": {
+          "darwin": "rm -rf /tmp/smup/FeroxBuster && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O feroxbuster.zip --quiet https://github.com/epi052/feroxbuster/releases/download/2.7.0/x86_64-macos-feroxbuster.zip && unzip -d FeroxBuster feroxbuster.zip && rm feroxbuster.zip && chmod +x FeroxBuster/feroxbuster",
+          "linux": "rm -rf /tmp/smup/FeroxBuster && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O feroxbuster.zip --quiet https://github.com/epi052/feroxbuster/releases/download/2.7.0/x86_64-linux-feroxbuster.zip && unzip -d FeroxBuster feroxbuster.zip && rm feroxbuster.zip && chmod +x FeroxBuster/feroxbuster"
+        },
+      },
+      {
+        "label": "Verifying command feroxbuster",
+        "labelSuccess": "App is ready to use",
+        "error": "App not installed",
+        "command": {
+          "darwin": "/tmp/smup/FeroxBuster/feroxbuster --help",
+          "linux": "/tmp/smup/FeroxBuster/feroxbuster --help"
+        }
+      }
+    ]
   },
   {
     "title": "dirsearch",
