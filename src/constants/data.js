@@ -13,6 +13,7 @@ DATA.TOOLS = [
       "$ python3 /tmp/smup/Sublist3r/sublist3r.py -d example.com -p 80,443",
       "$ python3 /tmp/smup/Sublist3r/sublist3r.py -e google,yahoo,virustotal -d example.com"
     ],
+    "combineUsages": [],
     "source": "github",
     "id": "github-com-aboul3la-Sublist3r",
     "categories": [
@@ -90,6 +91,7 @@ DATA.TOOLS = [
       "$ /tmp/smup/Findomain/findomain -t example.com -r -u resolved-subdomains.txt",
       "$ /tmp/smup/Findomain/findomain -f file_with_domains.txt"
     ],
+    "combineUsages": [],
     "source": "github",
     "id": "github-com-Findomain-Findomain",
     "categories": [
@@ -149,6 +151,7 @@ DATA.TOOLS = [
       "$ /tmp/smup/Chaos/chaos -d example.com -o example.txt",
       "$ /tmp/smup/Chaos/chaos -dL domains.txt"
     ],
+    "combineUsages": [],
     "source": "github",
     "id": "github-com-projectdiscovery-chaos-client",
     "categories": [
@@ -182,8 +185,8 @@ DATA.TOOLS = [
         "labelSuccess": "Chaos installed",
         "error": "Chaos installation failed",
         "command": {
-          "darwin": "rm -rf Chaos && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O chaos.zip --quiet https://github.com/projectdiscovery/chaos-client/releases/download/v0.2.0/chaos-client_0.2.0_macOS_amd64.zip && unzip -d Chaos chaos.zip && rm -rf chaos.zip && mv Chaos/chaos-client Chaos/chaos",
-          "linux": "rm -rf Chaos && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O chaos.zip --quiet https://github.com/projectdiscovery/chaos-client/releases/download/v0.2.0/chaos-client_0.2.0_linux_amd64.zip && unzip -d Chaos chaos.zip && rm -rf chaos.zip && mv Chaos/chaos-client Chaos/chaos"
+          "darwin": "rm -rf /tmp/smup/Chaos && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O chaos.zip --quiet https://github.com/projectdiscovery/chaos-client/releases/download/v0.2.0/chaos-client_0.2.0_macOS_amd64.zip && unzip -d Chaos chaos.zip && rm -rf chaos.zip && mv Chaos/chaos-client Chaos/chaos",
+          "linux": "rm -rf /tmp/smup/Chaos && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O chaos.zip --quiet https://github.com/projectdiscovery/chaos-client/releases/download/v0.2.0/chaos-client_0.2.0_linux_amd64.zip && unzip -d Chaos chaos.zip && rm -rf chaos.zip && mv Chaos/chaos-client Chaos/chaos"
         },
       },
       {
@@ -198,96 +201,18 @@ DATA.TOOLS = [
     ]
   },
   {
-    "title": "shuffledns",
-    "url": "https://github.com/projectdiscovery/shuffledns",
-    "description": "shuffleDNS is a wrapper around massdns written in go that allows you to enumerate valid subdomains using active bruteforce as well as resolve subdomains with wildcard handling and easy input-output…",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-projectdiscovery-shuffledns",
-    "categories": [
-      "subdomain",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "censys-subdomain-finder",
-    "url": "https://github.com/christophetd/censys-subdomain-finder",
-    "description": "Perform subdomain enumeration using the certificate transparency logs from Censys.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-christophetd-censys-subdomain-finder",
-    "categories": [
-      "subdomain",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "Turbolist3r",
-    "url": "https://github.com/fleetcaptain/Turbolist3r",
-    "description": "Subdomain enumeration tool with analysis features for discovered domains",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-fleetcaptain-Turbolist3r",
-    "categories": [
-      "subdomain",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "masscan",
-    "url": "https://github.com/robertdavidgraham/masscan",
-    "description": "TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-robertdavidgraham-masscan",
-    "categories": [
-      "port scanning",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "RustScan",
-    "url": "https://github.com/RustScan/RustScan",
-    "description": "The Modern Port Scanner",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-RustScan-RustScan",
-    "categories": [
-      "port scanning",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
     "title": "naabu",
     "url": "https://github.com/projectdiscovery/naabu",
     "description": "A fast port scanner written in go with focus on reliability and simplicity.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
+    "installLocation": "/tmp/smup/Naabu",
+    "usages": [
+      "$ /tmp/smup/Naabu/naabu -p 80,443,21-23 -host example.com",
+      "$ /tmp/smup/Naabu/naabu -list hosts.txt",
+      "$ /tmp/smup/Naabu/naabu -host 104.16.99.52 -json"
+    ],
+    "combineUsages": [
+      "$ echo example.com | /tmp/smup/Naabu/naabu -silent | /tml/smup/Httpx/httpx -silent"
+    ],
     "source": "github",
     "id": "github-com-projectdiscovery-naabu",
     "categories": [
@@ -295,94 +220,46 @@ DATA.TOOLS = [
       "recon"
     ],
     "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "nmap",
-    "url": "https://github.com/nmap/nmap",
-    "description": "Nmap - the Network Mapper. Github mirror of official SVN repository.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-nmap-nmap",
-    "categories": [
-      "port scanning",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "sandmap",
-    "url": "https://github.com/trimstray/sandmap",
-    "description": "Nmap on steroids. Simple CLI with the ability to run pure Nmap engine, 31 modules with 459 scan profiles.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-trimstray-sandmap",
-    "categories": [
-      "port scanning",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "ScanCannon",
-    "url": "https://github.com/johnnyxmas/ScanCannon",
-    "description": "Combines the speed of masscan with the reliability and detailed enumeration of nmap",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-johnnyxmas-ScanCannon",
-    "categories": [
-      "port scanning",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "EyeWitness",
-    "url": "https://github.com/FortyNorthSecurity/EyeWitness",
-    "description": "EyeWitness is designed to take screenshots of websites, provide some server header info, and identify default credentials if possible.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-FortyNorthSecurity-EyeWitness",
-    "categories": [
-      "screenshots",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "aquatone",
-    "url": "https://github.com/michenriksen/aquatone",
-    "description": "Aquatone is a tool for visual inspection of websites across a large amount of hosts and is convenient for quickly gaining an overview of HTTP-based attack surface.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-michenriksen-aquatone",
-    "categories": [
-      "screenshots",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
+    "preInstall": {
+      "label": "Verifying installation of naabu",
+      "command": {
+        "darwin": "/tmp/smup/Naabu/naabu -version",
+        "linux": "/tmp/smup/Naabu/naabu -version"
+      }
+    },
+    "prerequisites": {
+      "label": "Verifying Pre-requisites",
+      "labelSuccess": "Pre-requisites Verified",
+      "commands": [
+        {
+          "error": "wget is required",
+          "command": {
+            "darwin": "wget --version",
+            "linux": "wget --version"
+          }
+        }
+      ]
+    },
+    "installation": [
+      {
+        "label": "Install Naabu",
+        "labelSuccess": "Naabu installed",
+        "error": "Naabu installation failed",
+        "command": {
+          "darwin": "rm -rf /tmp/smup/Naabu && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O naabu.zip --quiet https://github.com/projectdiscovery/naabu/releases/download/v2.0.6/naabu_2.0.6_macOS_amd64.zip && unzip -d Naabu naabu.zip && rm -rf naabu.zip",
+          "linux": "rm -rf /tmp/smup/Naabu && mkdir -p /tmp/smup/ && cd /tmp/smup/ && wget -O naabu.zip --quiet https://github.com/projectdiscovery/naabu/releases/download/v2.0.6/naabu_2.0.6_linux_amd64.zip && unzip -d Naabu naabu.zip && rm -rf naabu.zip"
+        },
+      },
+      {
+        "label": "Verifying command naabu",
+        "labelSuccess": "App is ready to use",
+        "error": "App not installed",
+        "command": {
+          "darwin": "/tmp/smup/Naabu/naabu -version",
+          "linux": "/tmp/smup/Naabu/naabu -version"
+        }
+      }
+    ]
   },
   {
     "title": "screenshoteer",
