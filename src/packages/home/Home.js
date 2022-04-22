@@ -64,7 +64,7 @@ class Home extends React.Component {
         <Container theme={STYLES.container.main}>
           <Container theme={STYLES.container.header}>
             <Title>Bug Bounty Tools</Title>
-            <Description>Bug Bounty tools to speed up your bug hunting</Description>
+            <Description>Install any bug bounty tool in single click</Description>
           </Container>
           <Container theme={STYLES.container.middle}>
             <Search onChange={this.handleOnChange} value={this.state.query}>Search tools from the directory</Search>
