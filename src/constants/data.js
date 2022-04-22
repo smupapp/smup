@@ -521,8 +521,13 @@ DATA.TOOLS = [
     "title": "ParamSpider",
     "url": "https://github.com/devanshbatham/ParamSpider",
     "description": "Mining parameters from dark corners of Web Archives",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
+    "installLocation": "$ cd /tmp/smup/ParamSpider",
+    "usages": [
+      "$ python3 /tmp/smup/ParamSpider/paramspider.py --domain example.com",
+      "$ python3 /tmp/smup/ParamSpiter/paramspider.py --domain example.com --exclude php,jpg,svg",
+      "$ python3 /tmp/smup/ParamSpiter/paramspider.py --domain example.com --subs False",
+      "$ python3 /tmp/smup/ParamSpiter/paramspider.py --domain example.com --exclude php,jpg --output example.txt"
+    ],
     "source": "github",
     "id": "github-com-devanshbatham-ParamSpider",
     "categories": [
@@ -530,9 +535,62 @@ DATA.TOOLS = [
       "recon"
     ],
     "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
+    "preInstall": {
+      "label": "Verifying installation of LinkFinder",
+      "command": {
+        "darwin": "python3 /tmp/smup/ParamSpider/paramspider.py -h",
+        "linux": "python3 /tmp/smup/ParamSpider/paramspider.py -h"
+      }
+    },
+    "prerequisites": {
+      "label": "Verifying Pre-requisites",
+      "labelSuccess": "Pre-requisites Verified",
+      "commands": [
+        {
+          "error": "Python3 is required",
+          "command": {
+            "darwin": "python3 -V",
+            "linux": "python3 -V"
+          }
+        },
+        {
+          "error": "Git is required",
+          "command": {
+            "darwin": "git --version",
+            "linux": "git --version"
+          }
+        },
+      ]
+    },
+    "installation": [
+      {
+        "label": "Clone repository",
+        "labelSuccess": "Repository cloned",
+        "error": "Repository cloning failed",
+        "command": {
+          "darwin": "rm -rf /tmp/smup/ParamSpider && mkdir -p /tmp/smup/ && cd /tmp/smup && git clone https://github.com/devanshbatham/ParamSpider",
+          "linux": "rm -rf /tmp/smup/ParamSpider && mkdir -p /tmp/smup/ && cd /tmp/smup && git clone https://github.com/devanshbatham/ParamSpider"
+        },
+      },
+      {
+        "label": "Install dependencies",
+        "labelSuccess": "Dependencies Installed",
+        "error": "Dependencies installation failed",
+        "command": {
+          "darwin": "cd /tmp/smup/ParamSpider && pip3 install -r requirements.txt",
+          "linux": "cd /tmp/smup/ParamSpider && pip3 install -r requirements.txt"
+        }
+      },
+      {
+        "label": "Verifying command paramspider",
+        "labelSuccess": "App is ready to use",
+        "error": "App not installed",
+        "command": {
+          "darwin": "python3 /tmp/smup/ParamSpider/paramspider.py -h",
+          "linux": "python3 /tmp/smup/ParamSpider/paramspider.py -h"
+        }
+      }
+    ]
   },
   {
     "title": "wfuzz",
