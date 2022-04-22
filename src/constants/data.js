@@ -379,45 +379,17 @@ DATA.TOOLS = [
     ]
   },
   {
-    "title": "dirsearch",
-    "url": "https://github.com/maurosoria/dirsearch",
-    "description": "Web path scanner",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-maurosoria-dirsearch",
-    "categories": [
-      "content discovery",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "dirsearch",
-    "url": "https://github.com/evilsocket/dirsearch",
-    "description": "A Go implementation of dirsearch.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-evilsocket-dirsearch",
-    "categories": [
-      "content discovery",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
     "title": "LinkFinder",
     "url": "https://github.com/GerbenJavado/LinkFinder",
     "description": "A python script that finds endpoints in JavaScript files",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
+    "installLocation": "$ cd /tmp/smup/LinkFinder",
+    "usages": [
+      "$ python3 /tmp/smup/LinkFinder/linkfinder.py -i https://example.com -d",
+      "$ python3 /tmp/smup/LinkFinder/linkfinder.py -i https://example.com/1.js -o results.html",
+      "$ python3 /tmp/smup/LinkFinder/linkfinder.py -i https://example.com/1.js -o cli",
+      "$ python3 /tmp/smup/LinkFinder/linkfinder.py -i burpfile -b",
+      "$ python3 /tmp/smup/LinkFinder/linkfinder.py -i 'Desktop/*.js' -r ^/api/ -o results.html"
+    ],
     "source": "github",
     "id": "github-com-GerbenJavado-LinkFinder",
     "categories": [
@@ -425,152 +397,78 @@ DATA.TOOLS = [
       "recon"
     ],
     "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "JS-Scan",
-    "url": "https://github.com/zseano/JS-Scan",
-    "description": "a .js scanner, built in php. designed to scrape urls and other info",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-zseano-JS-Scan",
-    "categories": [
-      "links",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "LinksDumper",
-    "url": "https://github.com/arbazkiraak/LinksDumper",
-    "description": "Extract (links/possible endpoints) from responses & filter them via decoding/sorting",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-arbazkiraak-LinksDumper",
-    "categories": [
-      "links",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "GoLinkFinder",
-    "url": "https://github.com/0xsha/GoLinkFinder",
-    "description": "A fast and minimal JS endpoint extractor",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-0xsha-GoLinkFinder",
-    "categories": [
-      "links",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "BurpJSLinkFinder",
-    "url": "https://github.com/InitRoot/BurpJSLinkFinder",
-    "description": "Burp Extension for a passive scanning JS files for endpoint links.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-InitRoot-BurpJSLinkFinder",
-    "categories": [
-      "links",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "urlgrab",
-    "url": "https://github.com/IAmStoxe/urlgrab",
-    "description": "A golang utility to spider through a website searching for additional links.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-IAmStoxe-urlgrab",
-    "categories": [
-      "links",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "parameth",
-    "url": "https://github.com/maK-/parameth",
-    "description": "This tool can be used to brute discover GET and POST parameters",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-maK--parameth",
-    "categories": [
-      "parameters",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "param-miner",
-    "url": "https://github.com/PortSwigger/param-miner",
-    "description": "This extension identifies hidden, unlinked parameters. It's particularly useful for finding web cache poisoning vulnerabilities.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-PortSwigger-param-miner",
-    "categories": [
-      "parameters",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "ParamPamPam",
-    "url": "https://github.com/Bo0oM/ParamPamPam",
-    "description": "This tool for brute discover GET and POST parameters.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-Bo0oM-ParamPamPam",
-    "categories": [
-      "parameters",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
+    "preInstall": {
+      "label": "Verifying installation of LinkFinder",
+      "command": {
+        "darwin": "python3 /tmp/smup/LinkFinder/linkfinder.py -h",
+        "linux": "python3 /tmp/smup/LinkFinder/linkfinder.py -h"
+      }
+    },
+    "prerequisites": {
+      "label": "Verifying Pre-requisites",
+      "labelSuccess": "Pre-requisites Verified",
+      "commands": [
+        {
+          "error": "Python3 is required",
+          "command": {
+            "darwin": "python3 -V",
+            "linux": "python3 -V"
+          }
+        },
+        {
+          "error": "Git is required",
+          "command": {
+            "darwin": "git --version",
+            "linux": "git --version"
+          }
+        },
+      ]
+    },
+    "installation": [
+      {
+        "label": "Clone repository",
+        "labelSuccess": "Repository cloned",
+        "error": "Repository cloning failed",
+        "command": {
+          "darwin": "rm -rf /tmp/smup/LinkFinder && mkdir -p /tmp/smup/ && cd /tmp/smup && git clone https://github.com/GerbenJavado/LinkFinder",
+          "linux": "rm -rf /tmp/smup/LinkFinder && mkdir -p /tmp/smup/ && cd /tmp/smup && git clone https://github.com/GerbenJavado/LinkFinder"
+        },
+      },
+      {
+        "label": "Install dependencies",
+        "labelSuccess": "Dependencies Installed",
+        "error": "Dependencies installation failed",
+        "command": {
+          "darwin": "cd /tmp/smup/LinkFinder && pip3 install -r requirements.txt",
+          "linux": "cd /tmp/smup/LinkFinder && pip3 install -r requirements.txt"
+        }
+      },
+      {
+        "label": "Verifying command sublist3r",
+        "labelSuccess": "App is ready to use",
+        "error": "App not installed",
+        "command": {
+          "darwin": "python3 /tmp/smup/LinkFinder/linkfinder.py -h",
+          "linux": "python3 /tmp/smup/LinkFinder/linkfinder.py -h"
+        }
+      }
+    ]
   },
   {
     "title": "Arjun",
     "url": "https://github.com/s0md3v/Arjun",
     "description": "HTTP parameter discovery suite.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
+    "installLocation": "$ Global",
+    "usages": [
+      "$ arjun -u https://api.example.com/endpoint",
+      "$ arjun -u https://api.example.com/endpoint -m POST",
+      "$ arjun -i targets.txt",
+      "$ arjun -u https://api.example.com/endpoint -oJ result.json",
+      "$ arjun -u https://api.example.com/endpoint -m JSON --include='{\"root\":{\"a\":\"b\",$arjun$}}'",
+      "$ arjun -u https://api.example.com/endpoint -m XML --include='<?xml><root>$arjun$</root>'",
+      "$ arjun -u https://api.example.com/endpoint -t 10",
+      "$ arjun -u https://api.example.com/endpoint -d 2"
+    ],
     "source": "github",
     "id": "github-com-s0md3v-Arjun",
     "categories": [
@@ -578,9 +476,46 @@ DATA.TOOLS = [
       "recon"
     ],
     "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
+    "preInstall": {
+      "label": "Verifying installation of LinkFinder",
+      "command": {
+        "darwin": "arjun -h",
+        "linux": "arjun -h"
+      }
+    },
+    "prerequisites": {
+      "label": "Verifying Pre-requisites",
+      "labelSuccess": "Pre-requisites Verified",
+      "commands": [
+        {
+          "error": "pip3 is required",
+          "command": {
+            "darwin": "pip3 -v",
+            "linux": "pip3 -v"
+          }
+        }
+      ]
+    },
+    "installation": [
+      {
+        "label": "Install Arjun",
+        "labelSuccess": "Arjun Installed",
+        "error": "Arjun Installing Failed",
+        "command": {
+          "darwin": "pip3 install arjun",
+          "linux": "pip3 install arjun"
+        },
+      },
+      {
+        "label": "Verifying command arjun",
+        "labelSuccess": "App is ready to use",
+        "error": "App not installed",
+        "command": {
+          "darwin": "ajrun -h",
+          "linux": "arjun -h"
+        }
+      }
+    ]
   },
   {
     "title": "ParamSpider",
