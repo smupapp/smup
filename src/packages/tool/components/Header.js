@@ -244,10 +244,11 @@ class Header extends React.Component {
           </Container>
           <Container theme={STYLES.buttons}>
             <Container theme={STYLES.button}>
-              <ButtonPrimary onClick={this.handleOnSetup}>{this.state.installed ? 'App Installed' : 'Setup this App'}</ButtonPrimary>
+              { !this.state.installed && <ButtonPrimary onClick={this.handleOnSetup}>Setup this App</ButtonPrimary> }
+              { this.state.installed && <ButtonSecondary>Installed</ButtonSecondary> }
             </Container>
             <Container theme={STYLES.button}>
-              <ButtonSecondary onClick={this.handleOpenDocs}>View Docs</ButtonSecondary>
+              <ButtonPrimary onClick={this.handleOpenDocs}>View Docs</ButtonPrimary>
             </Container>
           </Container>
         </Container>
