@@ -455,69 +455,6 @@ DATA.TOOLS = [
     ]
   },
   {
-    "title": "Arjun",
-    "url": "https://github.com/s0md3v/Arjun",
-    "description": "HTTP parameter discovery suite.",
-    "installLocation": "$ Global",
-    "usages": [
-      "$ arjun -u https://api.example.com/endpoint",
-      "$ arjun -u https://api.example.com/endpoint -m POST",
-      "$ arjun -i targets.txt",
-      "$ arjun -u https://api.example.com/endpoint -oJ result.json",
-      "$ arjun -u https://api.example.com/endpoint -m JSON --include='{\"root\":{\"a\":\"b\",$arjun$}}'",
-      "$ arjun -u https://api.example.com/endpoint -m XML --include='<?xml><root>$arjun$</root>'",
-      "$ arjun -u https://api.example.com/endpoint -t 10",
-      "$ arjun -u https://api.example.com/endpoint -d 2"
-    ],
-    "source": "github",
-    "id": "github-com-s0md3v-Arjun",
-    "categories": [
-      "parameters",
-      "recon"
-    ],
-    "images": [],
-    "preInstall": {
-      "label": "Verifying installation of LinkFinder",
-      "command": {
-        "darwin": "arjun -h",
-        "linux": "arjun -h"
-      }
-    },
-    "prerequisites": {
-      "label": "Verifying Pre-requisites",
-      "labelSuccess": "Pre-requisites Verified",
-      "commands": [
-        {
-          "error": "pip3 is required",
-          "command": {
-            "darwin": "pip3 -v",
-            "linux": "pip3 -v"
-          }
-        }
-      ]
-    },
-    "installation": [
-      {
-        "label": "Install Arjun",
-        "labelSuccess": "Arjun Installed",
-        "error": "Arjun Installing Failed",
-        "command": {
-          "darwin": "pip3 install arjun",
-          "linux": "pip3 install arjun"
-        },
-      },
-      {
-        "label": "Verifying command arjun",
-        "labelSuccess": "App is ready to use",
-        "error": "App not installed",
-        "command": {
-          "darwin": "ajrun -h",
-          "linux": "arjun -h"
-        }
-      }
-    ]
-  },
-  {
     "title": "ParamSpider",
     "url": "https://github.com/devanshbatham/ParamSpider",
     "description": "Mining parameters from dark corners of Web Archives",
@@ -596,8 +533,12 @@ DATA.TOOLS = [
     "title": "wfuzz",
     "url": "https://github.com/xmendez/wfuzz",
     "description": "Web application fuzzer",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
+    "installLocation": "$ cd /tmp/smup/wfuzz",
+    "usages": [
+      "$ python3 /tmp/smup/wfuzz/src/wfuzz-cli.py -w wordlist/general/common.txt --hc 404 http://example.com/FUZZ",
+      "$ python3 tmp/smup/wfuzz/src/wfuzz-cli.py -f /tmp/outfile.json -w /tmp/smup/wfuzz/wordlist/general/common.txt http://example.com/FUZZ",
+      "$ python3 tmp/smup/wfuzz/src/wfuzz-cli.py -o json -w /tmp/smup/wfuzz/wordlist/general/common.txt http://example.com/FUZZ"
+    ],
     "source": "github",
     "id": "github-com-xmendez-wfuzz",
     "categories": [
@@ -605,9 +546,62 @@ DATA.TOOLS = [
       "recon"
     ],
     "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
+    "preInstall": {
+      "label": "Verifying installation of wfuzz",
+      "command": {
+        "darwin": "python3 /tmp/smup/wfuzz/src/wfuzz-cli.py -h",
+        "linux": "python3 /tmp/smup/wfuzz/src/wfuzz-cli.py -h"
+      }
+    },
+    "prerequisites": {
+      "label": "Verifying Pre-requisites",
+      "labelSuccess": "Pre-requisites Verified",
+      "commands": [
+        {
+          "error": "Python3 is required",
+          "command": {
+            "darwin": "python3 -V",
+            "linux": "python3 -V"
+          }
+        },
+        {
+          "error": "Git is required",
+          "command": {
+            "darwin": "git --version",
+            "linux": "git --version"
+          }
+        },
+      ]
+    },
+    "installation": [
+      {
+        "label": "Clone repository",
+        "labelSuccess": "Repository cloned",
+        "error": "Repository cloning failed",
+        "command": {
+          "darwin": "rm -rf /tmp/smup/wfuzz && mkdir -p /tmp/smup/ && cd /tmp/smup && git clone https://github.com/xmendez/wfuzz",
+          "linux": "rm -rf /tmp/smup/wfuzz && mkdir -p /tmp/smup/ && cd /tmp/smup && git clone https://github.com/xmendez/wfuzz"
+        },
+      },
+      {
+        "label": "Install dependencies",
+        "labelSuccess": "Dependencies Installed",
+        "error": "Dependencies installation failed",
+        "command": {
+          "darwin": "cd /tmp/smup/wfuzz && pip3 install -r requirements.txt",
+          "linux": "cd /tmp/smup/wfuzz && pip3 install -r requirements.txt"
+        }
+      },
+      {
+        "label": "Verifying command wfuzz",
+        "labelSuccess": "App is ready to use",
+        "error": "App not installed",
+        "command": {
+          "darwin": "python3 /tmp/smup/wfuzz/src/wfuzz-cli.py -h",
+          "linux": "python3 /tmp/smup/wfuzz/src/wfuzz-cli.py -h"
+        }
+      }
+    ]
   },
   {
     "title": "ffuf",
