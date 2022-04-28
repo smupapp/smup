@@ -607,8 +607,14 @@ DATA.TOOLS = [
     "title": "ffuf",
     "url": "https://github.com/ffuf/ffuf",
     "description": "Fast web fuzzer written in Go",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
+    "installLocation": "$ cd /tmp/smup/FFUF",
+    "usages": [
+      "$ /tmp/smup/FFUF/ffuf -w /path/to/wordlist -u https://example.com/FUZZ",
+      "$ /tmp/smup/FFUF/ffuf -w /path/to/vhost/wordlist -u https://example.com -H \"Host: FUZZ\" -fs 4242",
+      "$ /tmp/smup/FFUF/ffuf -w /path/to/values.txt -u https://example.com/script.php?valid_name=FUZZ -fc 401",
+      "$ /tmp/smup/FFUF/ffuf -w /path/to/paramnames.txt -u https://example.com/script.php?FUZZ=test_value -fs 4242",
+      "$ /tmp/smup/FFUF/ffuf -w /path/to/postdata.txt -X POST -d \"username=admin\&password=FUZZ\" -u https://example.com/login.php -fc 401"
+    ],
     "source": "github",
     "id": "github-com-ffuf-ffuf",
     "categories": [
@@ -616,23 +622,46 @@ DATA.TOOLS = [
       "recon"
     ],
     "images": [],
-    "preInstall": {},
-    "prerequisites": {},
-    "installation": []
-  },
-  {
-    "title": "fuzzdb",
-    "url": "https://github.com/fuzzdb-project/fuzzdb",
-    "description": "Dictionary of attack patterns and primitives for black-box application fault injection and resource discovery.",
-    "installLocation": "/tmp/smup/",
-    "usages": [],
-    "source": "github",
-    "id": "github-com-fuzzdb-project-fuzzdb",
-    "categories": [
-      "fuzzing",
-      "recon"
-    ],
-    "images": []
+    "preInstall": {
+      "label": "Verifying installation of ffuf",
+      "command": {
+        "darwin": "/tmp/smup/FFUF/ffuf -V",
+        "linux": "/tmp/smup/FFUF/ffuf -V"
+      }
+    },
+    "prerequisites": {
+      "label": "Verifying Pre-requisites",
+      "labelSuccess": "Pre-requisites Verified",
+      "commands": [
+        {
+          "error": "wget is required",
+          "command": {
+            "darwin": "wget --version",
+            "linux": "wget --version"
+          }
+        }
+      ]
+    },
+    "installation": [
+      {
+        "label": "Download ffuf binary",
+        "labelSuccess": "ffuf binary downloaded",
+        "error": "Download of binary failed",
+        "command": {
+          "darwin": "rm -rf /tmp/smup/FFUF && mkdir -p /tmp/smup/FFUF && cd /tmp/smup/ && wget -O ffuf.tar.gz --quiet https://github.com/ffuf/ffuf/releases/download/v1.4.1/ffuf_1.4.1_macOS_amd64.tar.gz && tar -xvzf ffuf.tar.gz -C FFUF && rm ffuf.tar.gz",
+          "linux": "rm -rf /tmp/smup/FFUF && mkdir -p /tmp/smup/FFUF && cd /tmp/smup/ && wget -O ffuf.tar.gz --quiet https://github.com/ffuf/ffuf/releases/download/v1.4.1/ffuf_1.4.1_linux_amd64.tar.gz && tar -xvzf ffuf.tar.gz -C FFUF && rm ffuf.tar.gz"
+        },
+      },
+      {
+        "label": "Verifying command findomain",
+        "labelSuccess": "App is ready to use",
+        "error": "App not installed",
+        "command": {
+          "darwin": "/tmp/smup/FFUF/ffuf -V",
+          "linux": "/tmp/smup/FFUF/ffuf -V"
+        }
+      }
+    ]
   }
 ];
 
