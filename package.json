@@ -1,7 +1,7 @@
 {
   "name": "smup",
   "version": "0.0.1",
-  "description": "Speed me up - Desktop App",
+  "description": "One Click Bug Bounty Tools Installer",
   "author": "Arshad Kazmi",
   "homepage": "https://github.com/arshadkazmi42/smup",
   "repository": {
@@ -18,7 +18,9 @@
     "postpackage": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --overwrite",
     "buildlinux": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=linux --arch=x64 --overwrite",
     "buildwindows": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=win32 --arch=x64 --overwrite",
-    "buildmac": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=darwin --arch=x64 --overwrite"
+    "buildmac": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=darwin --arch=x64 --overwrite",
+    "releaselinux": "electron-installer-debian --src builds/smup-linux-x64/ --dest releases/installers/ --arch amd64",
+    "releasemac": "electron-installer-dmg builds/smup-darwin-x64 releases/installers/Smup"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,15 +34,23 @@
     "babili-webpack-plugin": "^0.1.2",
     "css-loader": "^6.2.0",
     "electron": "^13.2.1",
+    "electron-installer-debian": "^3.1.0",
+    "electron-installer-dmg": "^3.0.0",
     "electron-packager": "^15.3.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-markdown": "^8.0.2",
     "style-loader": "^3.2.1",
+    "styled-components": "^5.3.0",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.0.0"
+  },
+  "dependencies": {
+    "command-exec": "^1.0.1",
+    "lodash": "^4.17.21"
   }
 }

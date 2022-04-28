@@ -70,7 +70,7 @@ module.exports = {
     onBeforeSetupMiddleware() {
       spawn(
         'electron',
-        ['.'],
+        ['.', '--no-sandbox'],
         { shell: true, env: process.env, stdio: 'inherit' }
       )
       .on('close', code => process.exit(0))
