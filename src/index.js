@@ -7,6 +7,7 @@ import './assets/css/index.css';
 let root = document.createElement('div');
 root.id = "root";
 document.body.appendChild( root );
+document.title = 'Smup';
 
 // Now we can render our application into it
 render( <App />, document.getElementById('root') );

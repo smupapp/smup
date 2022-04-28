@@ -39,12 +39,15 @@ if (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) |
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    title: 'Smup - BBApp Store',
     width: 1024, height: 768, show: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
     }
   });
+
+  mainWindow.setTitle('Arshad')
 
   // and load the index.html of the app.
   let indexPath;
