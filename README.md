@@ -18,9 +18,9 @@ Bug bounty tools store, variety of tools at one place with easy to search and si
 
 
 <div align="center">
-<img src="screenshots/1.png" height="500" width="700">
-<img src="screenshots/2.png" height="500" width="700">
-<img src="screenshots/3.png" height="500" width="700">
+<img src="screenshots/1.png" height="550" width="1024">
+<img src="screenshots/2.png" height="550" width="1024">
+<img src="screenshots/3.png" height="550" width="1024">
 </div>
 
 
