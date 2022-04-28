@@ -1,5 +1,5 @@
 {
-  "name": "smup",
+  "name": "Smup",
   "version": "0.0.1",
   "description": "One Click Bug Bounty Tools Installer",
   "author": "Arshad Kazmi",
@@ -16,9 +16,9 @@
     "build": "webpack --config webpack.build.config.js",
     "package": "webpack --config webpack.build.config.js",
     "postpackage": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --overwrite",
-    "buildlinux": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=linux --arch=x64 --overwrite",
+    "buildlinux": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=linux --icon=./src/assets/images/logo.png --arch=x64 --overwrite",
     "buildwindows": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=win32 --arch=x64 --overwrite",
-    "buildmac": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=darwin --arch=x64 --overwrite",
+    "buildmac": "webpack --config webpack.build.config.js && electron-packager ./ --out=./builds --platform=darwin --icon=./src/assets/images/logo.icns --arch=x64 --overwrite",
     "releaselinux": "electron-installer-debian --src builds/smup-linux-x64/ --dest releases/installers/ --arch amd64",
     "releasemac": "electron-installer-dmg builds/smup-darwin-x64 releases/installers/Smup"
   },
