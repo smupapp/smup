@@ -39,7 +39,7 @@ if (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) |
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    title: 'Smup - BBApp Store',
+    icon: 'src/assets/images/logo.png',
     width: 1024, height: 768, show: false,
     webPreferences: {
       nodeIntegration: true,
