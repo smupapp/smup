@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/smupapp/smup/main/smup.png" height="150">
+<img src="smup.png" height="150">
 
-# Smup
+# Smup - Bug Bounty Tools Store
 
-Single click bug bounty tools installer
+Bug bounty tools store, variety of tools at one place with easy to search and single click installation options.
 
 </div>
 
