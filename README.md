@@ -10,8 +10,8 @@ Bug bounty tools store, variety of tools at one place with easy to search and si
 
 ## Download
 
-- [Linux x64](https://www.dropbox.com/s/b3zjb7vms8mb1pj/smup_0.0.1_amd64.deb)
-- [MacOS](https://www.dropbox.com/s/397mv3nak0yroa1/smup_0.0.1.dmg)
+- [Linux x64](https://github.com/smupapp/smup/releases/download/v0.0.1/smup_0.0.1_amd64.deb)
+- [MacOS](https://github.com/smupapp/smup/releases/download/v0.0.1/smup_0.0.1.dmg)
 
 
 ## Screenshots
