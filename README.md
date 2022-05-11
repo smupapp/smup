@@ -24,6 +24,10 @@ Bug bounty tools store, variety of tools at one place with easy to search and si
 </div>
 
 
+## How to add new tool
+
+- Create [new issue](https://github.com/smupapp/smup/issues/new) to get a new tool added to the app
+
 
 ## Local Setup
 
