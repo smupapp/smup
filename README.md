@@ -2,7 +2,7 @@
 
 <img src="smup.png" height="150">
 
-# Smup - Bug Bounty Tools Store
+# Smup - Bug Bounty Tools Store (Beta)
 
 Bug bounty tools store, variety of tools at one place with easy to search and single click installation options.
 
